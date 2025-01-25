@@ -9,7 +9,7 @@ function ExploreMenu() {
         Eum, accusantium?
       </p>
       {/* menu list */}
-      <div className="flex gap-10 mt-[10px]">
+      <div className="flex gap-10 mt-[10px] overflow-x-scroll no-scrollbar ">
         {menu_list.map((item, index) => {
           return (
             <div key={index} className="flex flex-col items-center gap-3">
