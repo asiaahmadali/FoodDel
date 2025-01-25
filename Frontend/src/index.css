@@ -10,3 +10,8 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.activecategory {
+  border: 4px solid rgb(226, 84, 84);
+  padding: 2px;
+}

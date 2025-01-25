@@ -26,7 +26,7 @@ function ExploreMenu(Props) {
                 alt=""
                 className={
                   Props.category === item.menu_name
-                    ? 'active min-w-[80px] cursor-pointer w-[7.5vw] rounded-[50%]'
+                    ? 'activecategory min-w-[80px] cursor-pointer w-[7.5vw] rounded-[50%]'
                     : 'min-w-[80px] cursor-pointer w-[7.5vw] rounded-[50%]'
                 }
               />
