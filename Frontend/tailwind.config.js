@@ -9,16 +9,6 @@ export default {
     fontFamily: {
       outfit: ['Outfit', 'sans-serif'],
     },
-    plugins: [
-      function ({ addComponents }) {
-        addComponents({
-          '.no-scrollbar': {
-            '-webkit-scrollbar': 'none',
-            '-ms-overflow-style': 'none',
-            'scrollbar-width': 'none',
-          },
-        });
-      },
-    ],
   },
+  plugins: [],
 };

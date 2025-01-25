@@ -9,16 +9,24 @@ function ExploreMenu() {
         Eum, accusantium?
       </p>
       {/* menu list */}
-      <div className="flex gap-10 mt-[10px] overflow-x-scroll no-scrollbar ">
+      <div className="flex gap-10   mt-[10px] overflow-x-scroll hide-scrollbar ">
         {menu_list.map((item, index) => {
           return (
             <div key={index} className="flex flex-col items-center gap-3">
-              <img src={item.menu_image} alt="" />
-              <p>{item.menu_name}</p>
+              <img
+                src={item.menu_image}
+                alt=""
+                className="min-w-[80px] cursor-pointer w-[7.5vw] rounded-[50%]"
+              />
+              <p className="font-outfit text-[#747474] text-[16px] font-[600]  cursor-pointer">
+                {item.menu_name}
+              </p>
             </div>
           );
         })}
       </div>
+      {/* hr line */}
+      <hr className="mt-[10px] mb-[10px] bg-gray-400 h-[2px] border-none" />
     </div>
   );
 }
