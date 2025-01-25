@@ -1,5 +1,12 @@
+import Header from '../../components/Header/Header';
+import ExploreMenu from '../../components/ExploreMenu/ExploreMenu';
 function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <Header />
+      <ExploreMenu />
+    </div>
+  );
 }
 
 export default Home;
