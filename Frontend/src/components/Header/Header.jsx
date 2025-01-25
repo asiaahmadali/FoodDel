@@ -2,18 +2,20 @@ function Header() {
   return (
     <div>
       {/* header div */}
-      <div className="bg-[url(header_img.png)] bg-no-repeat bg-cover h-[400px] flex items-center justify-center">
+      <div className="bg-[url(header_img.png)] rounded-md bg-no-repeat bg-cover min-h-[450px] flex items-center p-[100px]">
         {/* header content div */}
-        <div className="">
-          <h1 className="text-white font-outfit text-4xl font-bold">
-            Order your favourite food
+        <div className="flex flex-col gap-2">
+          <h1 className="text-white font-outfit text-5xl font-bold w-[450px]">
+            Order your favourite food here
           </h1>
-          <p className="text-white">
+          <p className="text-white w-[400px] mt-[10px]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
             hic error rerum molestiae. Harum officiis ea provident ducimus odio
             eum.
           </p>
-          <button className="p-[10px] bg-white rounded-md">view menu</button>
+          <button className="p-[12px] bg-white rounded-full w-[150px] font-outfit mt-[5px]">
+            view menu
+          </button>
         </div>
       </div>
     </div>

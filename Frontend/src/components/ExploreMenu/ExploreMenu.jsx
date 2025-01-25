@@ -1,14 +1,15 @@
 import { menu_list } from '../../assets/assets';
 function ExploreMenu() {
   return (
-    <div>
-      <h1>Explore menu</h1>
-      <p>
+    <div className="mt-[30px] flex flex-col gap-[15px]">
+      <h1 className="font-bold font-outfit text-2xl">Explore our menu</h1>
+      <p className="w-[650px] font-outfit">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum,
-        accusantium?
+        accusantium?Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Eum, accusantium?
       </p>
       {/* menu list */}
-      <div className="flex gap-2">
+      <div className="flex gap-10 mt-[10px]">
         {menu_list.map((item, index) => {
           return (
             <div key={index} className="flex flex-col items-center gap-3">
