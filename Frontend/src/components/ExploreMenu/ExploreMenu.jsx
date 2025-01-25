@@ -11,7 +11,7 @@ function ExploreMenu() {
       <div className="flex gap-2">
         {menu_list.map((item, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="flex flex-col items-center gap-3">
               <img src={item.menu_image} alt="" />
               <p>{item.menu_name}</p>
             </div>
