@@ -12,7 +12,12 @@ function FoodDisplay(Props) {
         {/* food list */}
         <div className="grid grid-cols-auto-fill">
           {food_list.map((fooditem, index) => {
-            return <FoodItem key={index} fooditem={fooditem} />;
+            if (
+              Props.category === 'All' ||
+              Props.category === fooditem.category
+            ) {
+              return <FoodItem key={index} fooditem={fooditem} />;
+            }
           })}
         </div>
       </div>
