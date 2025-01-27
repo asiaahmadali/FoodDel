@@ -1,5 +1,16 @@
 import { createContext } from 'react';
+import { food_list } from '../assets/assets';
+export const StoreContext = createContext(null);
 
-export const StoreContext = createContext();
+const StoreContextprovider = (Props) => {
+  const contextValue = {
+    food_list,
+  };
+  return (
+    <StoreContext.Provider value={contextValue}>
+      {Props.children}
+    </StoreContext.Provider>
+  );
+};
 
-const StoreContextProvider = () => {};
+export default StoreContextprovider;
