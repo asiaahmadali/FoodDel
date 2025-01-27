@@ -36,6 +36,9 @@ function Footer() {
           <li>asiaahmadali17@gmail.com</li>
         </ul>
       </div>
+
+      <hr />
+      <p>CopyRight 2025 , Tomato.com - All rights reserved</p>
     </div>
   );
 }
