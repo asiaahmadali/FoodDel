@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { assets } from '../../assets/assets';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   const [menu, setMenu] = useState('home');
@@ -8,30 +9,34 @@ function NavBar() {
       <div className="flex justify-between pl-[100px] pr-[100px]">
         <img src={assets.logo} alt="" />
         <ul className="flex gap-8 font-outfit cursor-pointer">
-          <li
+          <Link
+            to="/"
             className={menu === 'home' ? 'active' : ''}
             onClick={() => setMenu('home')}
           >
             Home
-          </li>
-          <li
+          </Link>
+          <a
+            href="#menu"
             className={menu === 'menu' ? 'active' : ''}
             onClick={() => setMenu('menu')}
           >
             Menu
-          </li>
-          <li
+          </a>
+          <a
+            href="#mobile-app"
             className={menu === 'mobileapp' ? 'active' : ''}
             onClick={() => setMenu('mobileapp')}
           >
             Mobile App
-          </li>
-          <li
+          </a>
+          <a
+            href="#contact-us"
             className={menu === 'contactus' ? 'active' : ''}
             onClick={() => setMenu('contactus')}
           >
             Contact Us
-          </li>
+          </a>
         </ul>
         {/* right part of navbar */}
         <div className="flex gap-8 items-center ">

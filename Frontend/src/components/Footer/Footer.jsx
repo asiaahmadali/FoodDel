@@ -2,7 +2,10 @@ import { assets } from '../../assets/assets';
 
 function Footer() {
   return (
-    <div className="bg-[#323232] text-[#d9d9d9] flex  font-outfit gap-[15px] p-[50px] flex-col">
+    <div
+      id="contact-us"
+      className="bg-[#323232] text-[#d9d9d9] flex  font-outfit gap-[15px] p-[50px] flex-col"
+    >
       {/* content */}
       <div className="flex justify-around gap-[50px]">
         {/* left content */}

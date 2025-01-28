@@ -4,7 +4,7 @@ import FoodItem from '../FoodItem/FoodItem';
 function FoodDisplay(Props) {
   const { food_list } = useContext(StoreContext);
   return (
-    <div>
+    <div id="menu">
       <div>
         <h1 className="text-2xl font-outfit font-bold my-[20px]">
           Top Dishes near you

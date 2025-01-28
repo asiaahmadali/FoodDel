@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
 @layer utilities {
   .grid-cols-auto-fill {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

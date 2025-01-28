@@ -2,7 +2,10 @@ import { assets } from '../../assets/assets';
 
 export default function AppDownload() {
   return (
-    <div className="mt-[80px] flex flex-col text-center gap-[20px] items-center font-semibold font-outfit text-3xl">
+    <div
+      id="mobile-app"
+      className="mt-[80px] flex flex-col text-center gap-[20px] items-center font-semibold font-outfit text-3xl"
+    >
       <p>
         For better Experience Download
         <br /> Tomato App
