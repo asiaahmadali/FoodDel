@@ -7,7 +7,9 @@ function NavBar() {
   return (
     <div className="p-[20px] bg-gray-100 ">
       <div className="flex justify-between pl-[100px] pr-[100px]">
-        <img src={assets.logo} alt="" />
+        <Link to="/">
+          <img src={assets.logo} alt="" />
+        </Link>
         <ul className="flex gap-8 font-outfit cursor-pointer">
           <Link
             to="/"
@@ -42,7 +44,9 @@ function NavBar() {
         <div className="flex gap-8 items-center ">
           <img src={assets.search_icon} alt="" className="w-[25px] h-[25px]" />
           <div className="relative ">
-            <img src={assets.bag_icon} alt="" />
+            <Link to="/cart">
+              <img src={assets.basket_icon} alt="" />
+            </Link>
             <div className="absolute top-[-4px] right-[-4px] min-w-[10px] rounded-[5px] bg-red-600  min-h-[10px]"></div>
           </div>
           {/* sign in */}
