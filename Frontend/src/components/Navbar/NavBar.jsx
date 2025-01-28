@@ -48,7 +48,10 @@ function NavBar() {
           {/* sign in */}
           <div>
             <button className="bg-blue-500 font-outfit px-3 py-2 transition-all duration-300 ease-in-out hover:bg-blue-700  text-white rounded-md">
-              Sign in
+              <Link to="/signup" className="hover:text-white">
+                {' '}
+                Sign in
+              </Link>
             </button>
           </div>
         </div>
