@@ -81,7 +81,7 @@ function PlaceOrder() {
 
           {/* delivery fee */}
           <div className="flex justify-between items-center">
-            <p>Delivery Fee </p>
+            <p>${totalpriceofCart() === 0 ? 0 : 10}</p>
             <p>${10}</p>
           </div>
 
@@ -90,7 +90,7 @@ function PlaceOrder() {
           {/* with delivery charges */}
           <div className="flex justify-between items-center">
             <p>Total</p>
-            <p>${totalpriceofCart() + 10}</p>
+            <p>${totalpriceofCart() === 0 ? 0 : totalpriceofCart() + 10}</p>
           </div>
         </div>
         {/* proceed btn */}

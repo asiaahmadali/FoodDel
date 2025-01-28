@@ -71,7 +71,7 @@ function Cart() {
             {/* delivery fee */}
             <div className="flex justify-between items-center">
               <p>Delivery Fee </p>
-              <p>${10}</p>
+              <p>${totalpriceofCart() === 0 ? 0 : 10}</p>
             </div>
 
             <hr className="my-[5px]" />
@@ -79,7 +79,7 @@ function Cart() {
             {/* with delivery charges */}
             <div className="flex justify-between items-center">
               <p>Total</p>
-              <p>${totalpriceofCart() + 10}</p>
+              <p>${totalpriceofCart() === 0 ? 0 : totalpriceofCart() + 10}</p>
             </div>
           </div>
           {/* proceed btn */}
