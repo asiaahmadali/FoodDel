@@ -21,7 +21,12 @@ function Cart() {
           if (cartitems[item._id] > 0) {
             return (
               <div key={index}>
+                <img src={item.image} alt="" />
                 <p>{item.name}</p>
+                <p>{item.price}</p>
+                <p>{cartitems[item._id]}</p>
+                <p>{item.price * cartitems[item._id]}</p>
+                <p>x</p>
               </div>
             );
           }
