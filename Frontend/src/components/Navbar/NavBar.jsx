@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { assets } from '../../assets/assets';
 import { Link } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext';
 
 function NavBar() {
   const [menu, setMenu] = useState('home');
+  const { totalpriceofCart } = useContext(StoreContext);
+
   return (
     <div className="p-[20px] bg-gray-100 ">
       <div className="flex justify-between pl-[100px] pr-[100px]">
@@ -47,7 +50,13 @@ function NavBar() {
             <Link to="/cart">
               <img src={assets.basket_icon} alt="" />
             </Link>
-            <div className="absolute top-[-4px] right-[-4px] min-w-[10px] rounded-[5px] bg-red-600  min-h-[10px]"></div>
+            <div
+              className={
+                totalpriceofCart() === 0
+                  ? ''
+                  : 'absolute top-[-4px] right-[-4px] min-w-[10px] rounded-[5px] bg-red-600  min-h-[10px]'
+              }
+            ></div>
           </div>
           {/* sign in */}
           <div>
