@@ -7,4 +7,4 @@ const addFood = async (req, res) => {
   await foodModel;
 };
 
-module.exports = addFood;
+export default addFood;
