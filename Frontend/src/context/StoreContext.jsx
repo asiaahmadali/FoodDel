@@ -21,17 +21,30 @@ const StoreContextprovider = (Props) => {
     setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] - 1 }));
   };
 
+  const totalpriceofCart = () => {
+    let totalAmount = 0;
+
+    // beacuse cartitems is object that why used forin loop
+    for (const item in cartitems) {
+      if (cartitems[item] > 0) {
+        const iteminfo = food_list.find(
+          (productitem) => productitem._id === item
+        );
+        totalAmount = totalAmount + iteminfo.price * cartitems[item];
+      }
+    }
+    return totalAmount;
+  };
+
   const contextValue = {
     food_list,
     cartitems,
     setCartItems,
     addToCart,
     removeFromCart,
+    totalpriceofCart,
   };
 
-  useEffect(() => {
-    console.log(cartitems);
-  }, [cartitems]);
   return (
     <StoreContext.Provider value={contextValue}>
       {Props.children}

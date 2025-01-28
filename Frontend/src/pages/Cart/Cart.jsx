@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 
 function Cart() {
-  const { food_list, cartitems, removeFromCart } = useContext(StoreContext);
+  const { food_list, cartitems, removeFromCart, totalpriceofCart } =
+    useContext(StoreContext);
   return (
     <div className="m-[120px] font-outfit">
       {/* cart items */}
@@ -49,6 +50,55 @@ function Cart() {
             );
           }
         })}
+      </div>
+
+      {/* cart total and promo code */}
+      <div className="flex justify-between  mt-[100px]">
+        {/* total amount */}
+        <div className="w-1/2">
+          <h1 className="text-xl font-bold mb-[10px]">Carts Total</h1>
+          <div>
+            {/* total */}
+            <div className="flex justify-between items-center">
+              <p>Subtotal </p>
+              <p>${totalpriceofCart()}</p>
+            </div>
+
+            <hr className="my-[5px]" />
+
+            {/* delivery fee */}
+            <div className="flex justify-between items-center">
+              <p>Delivery Fee </p>
+              <p>${10}</p>
+            </div>
+
+            <hr className="my-[5px]" />
+
+            {/* with delivery charges */}
+            <div className="flex justify-between items-center">
+              <p>Total</p>
+              <p>${totalpriceofCart() + 10}</p>
+            </div>
+          </div>
+          {/* proceed btn */}
+          <button className="bg-orange-500 p-[10px] my-[10px] text-white rounded-sm">
+            Proceed to checkout
+          </button>
+        </div>
+        {/* promo code */}
+        <div className="flex flex-col gap-[10px]">
+          <p>If you have a promo code , enter it please</p>
+          <div className="rounded-sm ">
+            <input
+              type="text"
+              className="outline-none bg-gray-200  p-[10px] px-[30px]"
+              placeholder="Enter promo code"
+            />
+            <button className="bg-black text-white p-[10px] px-[30px]">
+              Submit
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
