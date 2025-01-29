@@ -4,7 +4,15 @@ import fs from 'fs';
 // add food
 
 const addFood = async (req, res) => {
-  await foodModel;
+  let image = `${req.file.filename}`;
+  const { name, description, price, category } = req.body;
+  const addedfood = await foodModel.create({
+    name,
+    description,
+    price,
+    image,
+    category,
+  });
 };
 
 export default addFood;
