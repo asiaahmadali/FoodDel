@@ -5,14 +5,15 @@ const app = express();
 import foodRouter from './routes/foodRoute.js';
 // middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // db connection
 connectDB();
 
-app.get('/', (req, res) => {
-  res.send('api working');
-});
+// app.get('/', (req, res) => {
+//   res.send('api working');
+// });
 
 // api
 

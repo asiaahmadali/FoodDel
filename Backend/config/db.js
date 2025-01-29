@@ -12,3 +12,5 @@ export const connectDB = async () => {
       console.log('db not connected');
     });
 };
+
+// mongodb+srv://asiaahmadali:asiaahmadali786@cluster0.aa0qs.mongodb.net/Zestify

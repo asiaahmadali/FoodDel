@@ -6,16 +6,17 @@ import multer from 'multer';
 // multer
 
 const storage = multer.diskStorage({
-  destination: 'uploads',
-  filename: (rreq, file, cb) => {
+  destination: (req, file, cb) => {
+    cb(null, 'uploads');
+  },
+
+  filename: (req, file, cb) => {
     return cb(null, `${Date.now()}${file.originalname}`);
   },
 });
 
-const uploads = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
-foodRouter.post('/add', uploads.single('image'), (req, res) => {
-  addFood();
-});
+foodRouter.post('/add', upload.single('image'), addFood);
 
 export default foodRouter;
