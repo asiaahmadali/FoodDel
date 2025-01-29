@@ -15,9 +15,10 @@ connectDB();
 //   res.send('api working');
 // });
 
-// api
+// api endpoints
 
 app.use('/api/food', foodRouter);
+app.use('/images', express.static('uploads'));
 
 app.listen(3000, () => {
   console.log('server started');
