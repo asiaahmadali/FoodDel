@@ -8,7 +8,11 @@ function FoodItem(Props) {
     <div className="rounded-[14px] m-auto shadow-custom">
       {/* food item image */}
       <div className="relative">
-        <img src={Props.fooditem.image} alt="" className="rounded-t-md " />
+        <img
+          src={'http://localhost:3000/images/' + Props.fooditem.image}
+          alt=""
+          className="rounded-t-md "
+        />
         {!cartitems[Props.fooditem._id] ? (
           <img
             src={assets.add_icon_white}

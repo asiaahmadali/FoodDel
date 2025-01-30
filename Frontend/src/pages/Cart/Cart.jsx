@@ -29,7 +29,11 @@ function Cart() {
                   className="grid grid-cols-6 gap-4 items-center mb-[20px]"
                 >
                   <div className="flex justify-start">
-                    <img src={item.image} alt="" className="w-[80px]" />
+                    <img
+                      src={'http://localhost:3000/images/' + item.image}
+                      alt=""
+                      className="w-[80px]"
+                    />
                   </div>
 
                   <p>{item.name}</p>

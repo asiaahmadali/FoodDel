@@ -1,11 +1,17 @@
 import { createContext, useEffect, useState } from 'react';
-import { food_list } from '../assets/assets';
+import axios from 'axios';
 export const StoreContext = createContext(null);
 
 const StoreContextprovider = (Props) => {
   const [cartitems, setCartItems] = useState({});
+  const [food_list, setFoodList] = useState([]);
   // jwt token
   const [token, setToken] = useState('');
+
+  const getFoodList = async () => {
+    const response = await axios.get('http://localhost:3000/api/food/list');
+    setFoodList(response.data.data);
+  };
 
   // when user add item first time in cart
   const addToCart = (itemid) => {
@@ -40,9 +46,13 @@ const StoreContextprovider = (Props) => {
 
   // to prevent datalost on reload
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setToken(localStorage.getItem('token'));
-    }
+    const loadListData = async () => {
+      await getFoodList();
+      if (localStorage.getItem('token')) {
+        setToken(localStorage.getItem('token'));
+      }
+    };
+    loadListData();
   }, []);
 
   const contextValue = {
