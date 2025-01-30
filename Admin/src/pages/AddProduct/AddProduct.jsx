@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { assets } from '../../assests/assets';
+import axios from 'axios';
 
 function AddProduct() {
   const [image, setImage] = useState(false);
@@ -21,9 +22,43 @@ function AddProduct() {
   useEffect(() => {
     console.log(data);
   }, [data]);
+
+  //   api call
+
+  const SubmitHandler = async (e) => {
+    e.preventDefault();
+    // url for add
+    const url = 'http://localhost:3000';
+    // form handling
+
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('name', data.name);
+    formData.append('description', data.description);
+    formData.append('price', Number(data.price));
+    formData.append('category', data.category);
+
+    // api call
+
+    const response = await axios.post(`${url}/api/food/add`, formData);
+    if (response.data.success) {
+      setData({
+        name: '',
+        description: '',
+        price: '',
+        category: 'Salad',
+      });
+      setImage(false);
+    } else {
+      console.log('error');
+    }
+  };
   return (
     <div>
-      <form className="m-[30px]  text-[#6d6d6d] flex flex-col gap-[10px] w-[70%] font-outfit text-[15px]">
+      <form
+        onSubmit={SubmitHandler}
+        className="m-[30px]  text-[#6d6d6d] flex flex-col gap-[10px] w-[70%] font-outfit text-[15px]"
+      >
         {/* product image */}
         <div className="flex flex-col w-[100px] gap-[10px] ">
           <h1>Upload image</h1>
