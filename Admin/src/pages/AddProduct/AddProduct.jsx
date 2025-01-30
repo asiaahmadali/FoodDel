@@ -1,5 +1,9 @@
 function AddProduct() {
-  return <div></div>;
+  return (
+    <div>
+      <h1>add</h1>
+    </div>
+  );
 }
 
 export default AddProduct;

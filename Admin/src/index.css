@@ -13,9 +13,14 @@
     row-gap: 100px;
     gap: 20px;
   }
+
   .shadow-custom {
     box-shadow: 0px 0px 10px #00000015;
   }
+}
+.bg-custom.active {
+  background-color: #fff0ed;
+  border-color: #eea394;
 }
 .active {
   color: red;
