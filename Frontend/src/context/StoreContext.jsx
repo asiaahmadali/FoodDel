@@ -1,9 +1,11 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { food_list } from '../assets/assets';
 export const StoreContext = createContext(null);
 
 const StoreContextprovider = (Props) => {
   const [cartitems, setCartItems] = useState({});
+  // jwt token
+  const [token, setToken] = useState('');
 
   // when user add item first time in cart
   const addToCart = (itemid) => {
@@ -36,8 +38,12 @@ const StoreContextprovider = (Props) => {
     return totalAmount;
   };
 
-  // jwt token
-  const [token, setToken] = useState('');
+  // to prevent datalost on reload
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setToken(localStorage.getItem('token'));
+    }
+  }, []);
 
   const contextValue = {
     food_list,

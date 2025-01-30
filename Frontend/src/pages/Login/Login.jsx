@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import axios from 'axios';
-import StoreContext from '../../context/StoreContext';
+import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -12,7 +12,7 @@ function Login() {
 
   // get settoken fyntion fron context
   const { settoken } = useContext(StoreContext);
-  const url = 'http://localhost/3000';
+  const url = 'http://localhost:3000';
 
   const changeHandler = (e) => {
     const name = e.target.name;
@@ -27,7 +27,7 @@ function Login() {
     if (response.data.success) {
       settoken(response.data.token);
       localStorage.setItem('token', response.data.token);
-      navigate('/home');
+      navigate('/');
     }
   };
 

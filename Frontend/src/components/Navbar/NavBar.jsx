@@ -1,12 +1,19 @@
 import { useContext, useState } from 'react';
 import { assets } from '../../assets/assets';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
 function NavBar() {
   const [menu, setMenu] = useState('home');
-  const { totalpriceofCart } = useContext(StoreContext);
+  const { totalpriceofCart, token, setToken } = useContext(StoreContext);
+  const navigate = useNavigate();
 
+  // logout
+  const logOut = () => {
+    localStorage.removeItem('token');
+    setToken('');
+    navigate('/');
+  };
   return (
     <div className="p-[20px] bg-gray-100 ">
       <div className="flex justify-between pl-[100px] pr-[100px]">
@@ -60,12 +67,40 @@ function NavBar() {
           </div>
           {/* sign in */}
           <div>
-            <button className="bg-blue-500 font-outfit px-3 py-2 transition-all duration-300 ease-in-out hover:bg-blue-700  text-white rounded-md">
-              <Link to="/signup" className="hover:text-white">
-                {' '}
-                Sign in
-              </Link>
-            </button>
+            {!token ? (
+              <button className="bg-blue-500 font-outfit px-3 py-2 transition-all duration-300 ease-in-out hover:bg-blue-700  text-white rounded-md">
+                <Link to="/signup" className="hover:text-white">
+                  {' '}
+                  Sign in
+                </Link>
+              </button>
+            ) : (
+              <div className="relative custom-hover cursor-pointer">
+                <img src={assets.profile_icon} alt="" />
+                <ul
+                  className="absolute hidden right-0 custom-dropdown
+                 z-1"
+                >
+                  <li className="flex gap-[8px] cursor-pointer items-center ">
+                    <img src={assets.bag_icon} alt="" className="w-[20px]" />
+                    <p className="cursor-pointer hover:text-orange-400">
+                      Orders
+                    </p>
+                  </li>
+
+                  <hr />
+                  <li className="flex gap-[8px] cursor-pointer items-center ">
+                    <img src={assets.logout_icon} alt="" className="w-[20px]" />
+                    <p
+                      className="cursor-pointer hover:text-orange-400"
+                      onClick={logOut}
+                    >
+                      LogOut
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

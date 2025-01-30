@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import StoreContext from '../../context/StoreContext';
+import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
@@ -12,7 +12,7 @@ function SignUp() {
   });
   const navigate = useNavigate();
   // get settoken fyntion fron context
-  const { settoken } = useContext(StoreContext);
+  const { setToken } = useContext(StoreContext);
 
   const changeHandler = (e) => {
     const name = e.target.name;
@@ -25,9 +25,9 @@ function SignUp() {
     e.preventDefault();
     const response = await axios.post(`${url}/api/user/signup`, data);
     if (response.data.success) {
-      settoken(response.data.token);
+      setToken(response.data.token);
       localStorage.setItem('token', response.data.token);
-      navigate('/home');
+      navigate('/');
     } else {
       alert(response.data.message);
     }
