@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import { food_list } from '../assets/assets';
 export const StoreContext = createContext(null);
 
@@ -36,6 +36,9 @@ const StoreContextprovider = (Props) => {
     return totalAmount;
   };
 
+  // jwt token
+  const [token, setToken] = useState('');
+
   const contextValue = {
     food_list,
     cartitems,
@@ -43,6 +46,8 @@ const StoreContextprovider = (Props) => {
     addToCart,
     removeFromCart,
     totalpriceofCart,
+    token,
+    setToken,
   };
 
   return (

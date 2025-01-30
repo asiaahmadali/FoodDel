@@ -1,8 +1,36 @@
+import { useContext, useState } from 'react';
+import StoreContext from '../../context/StoreContext';
+import { useNavigate } from 'react-router-dom';
+
+import axios from 'axios';
 function SignUp() {
-  const handleSubmit = (e) => {
+  const url = 'http://localhost:3000';
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const navigate = useNavigate();
+  // get settoken fyntion fron context
+  const { settoken } = useContext(StoreContext);
+
+  const changeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((data) => ({ ...data, [name]: value }));
+  };
+
+  //  signup handler
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can handle the form submission logic here
-    console.log('Form submitted');
+    const response = await axios.post(`${url}/api/user/signup`, data);
+    if (response.data.success) {
+      settoken(response.data.token);
+      localStorage.setItem('token', response.data.token);
+      navigate('/home');
+    } else {
+      alert(response.data.message);
+    }
   };
 
   return (
@@ -23,6 +51,8 @@ function SignUp() {
               type="text"
               id="name"
               name="name"
+              onChange={changeHandler}
+              value={data.name}
               className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="Your name"
               required
@@ -40,6 +70,8 @@ function SignUp() {
               type="email"
               id="email"
               name="email"
+              onChange={changeHandler}
+              value={data.email}
               className="w-full px-4 py-2 mt-1 border rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="Your email"
               required
@@ -57,6 +89,8 @@ function SignUp() {
               type="password"
               id="password"
               name="password"
+              onChange={changeHandler}
+              value={data.password}
               className="w-full  px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="Your password"
               required
