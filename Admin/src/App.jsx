@@ -1,8 +1,16 @@
+import NavBar from './components/NavBar/NavBar';
+import SideBar from './components/sideBar/sidebar';
+
 import './index.css';
 function App() {
   return (
     <div>
-      <h1 className="text-blue-800 text-2xl font-outfit">admin</h1>
+      <NavBar />
+      <hr />
+
+      <div>
+        <SideBar></SideBar>
+      </div>
     </div>
   );
 }
