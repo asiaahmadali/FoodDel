@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { assets } from '../../assests/assets';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function AddProduct() {
   const [image, setImage] = useState(false);
@@ -49,6 +50,7 @@ function AddProduct() {
         category: 'Salad',
       });
       setImage(false);
+      toast.success(response.data.message);
     } else {
       console.log('error');
     }

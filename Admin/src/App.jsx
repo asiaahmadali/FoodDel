@@ -5,9 +5,13 @@ import './index.css';
 import AddProduct from './pages/AddProduct/AddProduct';
 import Orders from './pages/Orders/Orders';
 import ListProducts from './pages/ListProducts/ListProducts';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <div>
+      <ToastContainer />
       <NavBar />
       <hr />
 
