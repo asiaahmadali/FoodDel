@@ -3,6 +3,7 @@ import cors from 'cors';
 import { connectDB } from './config/db.js';
 const app = express();
 import foodRouter from './routes/foodRoute.js';
+import userRouter from './routes/userRoute.js';
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -11,14 +12,11 @@ app.use(cors());
 // db connection
 connectDB();
 
-// app.get('/', (req, res) => {
-//   res.send('api working');
-// });
-
-// api endpoints
+// router api's
 
 app.use('/api/food', foodRouter);
 app.use('/images', express.static('uploads'));
+app.use('/api/user', userRouter);
 
 app.listen(3000, () => {
   console.log('server started');
