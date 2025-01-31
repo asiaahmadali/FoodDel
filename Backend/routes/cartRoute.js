@@ -1,11 +1,11 @@
 import express from 'express';
 const cartRouter = express.Router();
-import isLogedIn from '../middlewares/auth';
+import isLogedIn from '../middlewares/auth.js';
 import {
   addCart,
   deleteFromCart,
   getCartData,
-} from '../controlers/cartController';
+} from '../controlers/cartController.js';
 
 cartRouter.post('/add', isLogedIn, addCart);
 cartRouter.get('/getcart', isLogedIn, getCartData);

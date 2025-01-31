@@ -21,7 +21,7 @@ connectDB();
 app.use('/api/food', foodRouter);
 app.use('/images', express.static('uploads'));
 app.use('/api/user', userRouter);
-app.use('/api/use', cartRouter);
+app.use('/api/cart', cartRouter);
 
 app.listen(3000, () => {
   console.log('server started');
