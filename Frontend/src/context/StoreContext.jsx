@@ -17,8 +17,10 @@ const StoreContextprovider = (Props) => {
   const addToCart = async (itemid) => {
     // create new entry
     if (!cartitems[itemid]) {
+      console.log(itemid);
       setCartItems((prev) => ({ ...prev, [itemid]: 1 }));
     } else {
+      console.log(itemid);
       setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] + 1 }));
     }
     // add cart data in backend
