@@ -14,12 +14,20 @@ const StoreContextprovider = (Props) => {
   };
 
   // when user add item first time in cart
-  const addToCart = (itemid) => {
+  const addToCart = async (itemid) => {
     // create new entry
     if (!cartitems[itemid]) {
       setCartItems((prev) => ({ ...prev, [itemid]: 1 }));
     } else {
       setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] + 1 }));
+    }
+    // add cart data in backend
+    if (token) {
+      await axios.post(
+        'http://localhost:3000/api/cart/add',
+        { itemid },
+        { headers: { token } }
+      );
     }
   };
 
