@@ -5,10 +5,10 @@ const addCart = async (req, res) => {
   try {
     const userData = await userModel.findById(req.body.userId);
     let cartData = await userData.cartData;
-    if (!cartData[req.body.itemId]) {
-      cartData[req.body.itemId] = 1;
+    if (!cartData[req.body.itemid]) {
+      cartData[req.body.itemid] = 1;
     } else {
-      cartData[req.body.itemId] += 1;
+      cartData[req.body.itemid] += 1;
     }
     await userModel.findByIdAndUpdate(req.body.userId, { cartData });
     res.json({ success: true, message: 'data added to cart' });
@@ -24,8 +24,8 @@ const deleteFromCart = async (req, res) => {
     const userAllData = await userModel.findById(req.body.userId);
     // extract dcartdata from it
     let cartData = await userAllData.cartData;
-    if (cartData[req.body.itemId] > 0) {
-      cartData[req.body.itemId] -= 1;
+    if (cartData[req.body.itemid] > 0) {
+      cartData[req.body.itemid] -= 1;
     }
     // update cart data
     await userModel.findByIdAndUpdate(req.body.userId, { cartData });
