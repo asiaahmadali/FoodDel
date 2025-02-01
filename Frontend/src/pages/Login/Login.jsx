@@ -11,7 +11,7 @@ function Login() {
   const navigate = useNavigate();
 
   // get settoken fyntion fron context
-  const { settoken } = useContext(StoreContext);
+  const { setToken } = useContext(StoreContext);
   const url = 'http://localhost:3000';
 
   const changeHandler = (e) => {
@@ -25,7 +25,7 @@ function Login() {
     e.preventDefault();
     const response = await axios.post(`${url}/api/user/login`, data);
     if (response.data.success) {
-      settoken(response.data.token);
+      setToken(response.data.token);
       localStorage.setItem('token', response.data.token);
       navigate('/');
     }

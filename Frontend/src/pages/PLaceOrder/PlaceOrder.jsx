@@ -1,10 +1,34 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
 function PlaceOrder() {
   const navigate = useNavigate();
-  const { totalpriceofCart } = useContext(StoreContext);
+  const { totalpriceofCart, token, food_list, cartitems } =
+    useContext(StoreContext);
+  const url = 'http://localhost:3000';
+
+  const [data, setData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    street: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    country: '',
+    phone: '',
+  });
+
+  const changeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((data) => ({ ...data, [name]: value }));
+  };
+
+  useEffect(() => {
+    console.log(data);
+  }, []);
   return (
     <form className="flex justify-between font-outfit m-[100px]">
       {/* left part */}
@@ -15,22 +39,34 @@ function PlaceOrder() {
           <input
             type="text"
             placeholder="First Name"
+            name="firstName"
+            onChange={changeHandler}
+            value={data.firstName}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
           />
           <input
             type="text"
             placeholder="Last Name"
+            name="lastName"
+            onChange={changeHandler}
+            value={data.lastName}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
           />
         </div>
         <input
           type="email"
           placeholder="Email"
+          name="email"
+          onChange={changeHandler}
+          value={data.email}
           className="focus:outline-none w-full border-[1px] border-gray-400 p-[8px] rounded-md "
         />
         <input
           type="text"
           placeholder="Street"
+          name="street"
+          onChange={changeHandler}
+          value={data.street}
           className="focus:outline-none w-full border-[1px] border-gray-400 p-[8px] rounded-md "
         />
 
@@ -38,11 +74,17 @@ function PlaceOrder() {
           <input
             type="text"
             placeholder="City"
+            name="city"
+            onChange={changeHandler}
+            value={data.city}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
           />
           <input
             type="text"
             placeholder="State"
+            name="state"
+            onChange={changeHandler}
+            value={data.state}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
           />
         </div>
@@ -51,17 +93,26 @@ function PlaceOrder() {
           <input
             type="text"
             placeholder="ZipCode"
+            name="zipcode"
+            onChange={changeHandler}
+            value={data.zipcode}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
           />
           <input
             type="text"
             placeholder="Country"
+            name="country"
+            onChange={changeHandler}
+            value={data.country}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
           />
         </div>
         <input
           type="text"
           placeholder="Phone"
+          name="phone"
+          onChange={changeHandler}
+          value={data.phone}
           className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
         />
       </div>

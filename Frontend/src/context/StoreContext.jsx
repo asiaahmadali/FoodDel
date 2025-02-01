@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+
 export const StoreContext = createContext(null);
 
 const StoreContextprovider = (Props) => {
@@ -13,28 +14,50 @@ const StoreContextprovider = (Props) => {
     setFoodList(response.data.data);
   };
 
+  // Save cartitems to localStorage whenever cart changes
+  useEffect(() => {
+    if (cartitems && Object.keys(cartitems).length > 0) {
+      localStorage.setItem('cartitems', JSON.stringify(cartitems));
+    }
+  }, [cartitems]);
+
   // when user add item first time in cart
   const addToCart = async (itemid) => {
-    // create new entry
     if (!cartitems[itemid]) {
-      console.log(itemid);
+      console.log('Adding item to cart with ID:', itemid); // Check the item ID
       setCartItems((prev) => ({ ...prev, [itemid]: 1 }));
     } else {
-      console.log(itemid);
+      console.log('Updating cart item count for ID:', itemid); // Check the item ID
       setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] + 1 }));
     }
-    // add cart data in backend
+
     if (token) {
-      await axios.post(
-        'http://localhost:3000/api/cart/add',
-        { itemid },
-        { headers: { token } }
-      );
+      try {
+        const dataToSend = { itemid };
+        console.log('Sending data to backend:', dataToSend); // Log the payload
+        const response = await axios.post(
+          'http://localhost:3000/api/cart/add',
+          dataToSend,
+          { headers: { token } }
+        );
+        console.log('Response:', response); // Log the response
+      } catch (error) {
+        console.error('Error adding item to cart:', error);
+      }
     }
   };
 
-  // remove from cart
+  // prevent loading cart data
+  const getCartData = async (token) => {
+    const response = await axios.post(
+      'http://localhost:3000/api/cart/getcart',
+      {},
+      { headers: { token } }
+    );
+    setCartItems(response.data.cartData);
+  };
 
+  // remove from cart
   const removeFromCart = (itemid) => {
     setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] - 1 }));
   };
@@ -42,7 +65,7 @@ const StoreContextprovider = (Props) => {
   const totalpriceofCart = () => {
     let totalAmount = 0;
 
-    // beacuse cartitems is object that why used forin loop
+    // because cartitems is an object, that's why used for-in loop
     for (const item in cartitems) {
       if (cartitems[item] > 0) {
         const iteminfo = food_list.find(
@@ -54,12 +77,20 @@ const StoreContextprovider = (Props) => {
     return totalAmount;
   };
 
-  // to prevent datalost on reload
+  // to prevent data loss on reload
   useEffect(() => {
     const loadListData = async () => {
       await getFoodList();
+
+      // Load cart data from localStorage on page reload
+      const storedCartItems = localStorage.getItem('cartitems');
+      if (storedCartItems) {
+        setCartItems(JSON.parse(storedCartItems));
+      }
+
       if (localStorage.getItem('token')) {
         setToken(localStorage.getItem('token'));
+        await getCartData(localStorage.getItem('token'));
       }
     };
     loadListData();
