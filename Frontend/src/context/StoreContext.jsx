@@ -9,57 +9,33 @@ const StoreContextprovider = (Props) => {
   // jwt token
   const [token, setToken] = useState('');
 
-  const getFoodList = async () => {
-    const response = await axios.get('http://localhost:3000/api/food/list');
-    setFoodList(response.data.data);
-  };
-
-  // Save cartitems to localStorage whenever cart changes
-  useEffect(() => {
-    if (cartitems && Object.keys(cartitems).length > 0) {
-      localStorage.setItem('cartitems', JSON.stringify(cartitems));
-    }
-  }, [cartitems]);
-
   // when user add item first time in cart
   const addToCart = async (itemid) => {
     if (!cartitems[itemid]) {
-      console.log('Adding item to cart with ID:', itemid); // Check the item ID
       setCartItems((prev) => ({ ...prev, [itemid]: 1 }));
     } else {
-      console.log('Updating cart item count for ID:', itemid); // Check the item ID
       setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] + 1 }));
     }
 
     if (token) {
-      try {
-        const dataToSend = { itemid };
-        console.log('Sending data to backend:', dataToSend); // Log the payload
-        const response = await axios.post(
-          'http://localhost:3000/api/cart/add',
-          dataToSend,
-          { headers: { token } }
-        );
-        console.log('Response:', response); // Log the response
-      } catch (error) {
-        console.error('Error adding item to cart:', error);
-      }
+      await axios.post(
+        'http://localhost:3000/api/cart/add',
+        { itemid },
+        { headers: { token } }
+      );
     }
   };
 
-  // prevent loading cart data
-  const getCartData = async (token) => {
-    const response = await axios.post(
-      'http://localhost:3000/api/cart/getcart',
-      {},
-      { headers: { token } }
-    );
-    setCartItems(response.data.cartData);
-  };
-
   // remove from cart
-  const removeFromCart = (itemid) => {
+  const removeFromCart = async (itemid) => {
     setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] - 1 }));
+    if (token) {
+      await axios.post(
+        'https://localhost:3000/api/cart/delete',
+        { itemid },
+        { headers: { token } }
+      );
+    }
   };
 
   const totalpriceofCart = () => {
@@ -71,30 +47,49 @@ const StoreContextprovider = (Props) => {
         const iteminfo = food_list.find(
           (productitem) => productitem._id === item
         );
-        totalAmount = totalAmount + iteminfo.price * cartitems[item];
+
+        totalAmount += iteminfo.price * cartitems[item];
       }
     }
     return totalAmount;
   };
 
+  // fetch food list
+  const getFoodList = async () => {
+    const response = await axios.get('http://localhost:3000/api/food/list');
+    setFoodList(response.data.data);
+  };
+
+  // prevent loading cart data
+  const loadCartData = async (token) => {
+    const response = await axios.post(
+      'http://localhost:3000/api/cart/getcart',
+      {},
+      { headers: { token } }
+    );
+    setCartItems(response.data.cartData);
+  };
+
   // to prevent data loss on reload
   useEffect(() => {
-    const loadListData = async () => {
+    const loadData = async () => {
       await getFoodList();
-
-      // Load cart data from localStorage on page reload
-      const storedCartItems = localStorage.getItem('cartitems');
-      if (storedCartItems) {
-        setCartItems(JSON.parse(storedCartItems));
-      }
 
       if (localStorage.getItem('token')) {
         setToken(localStorage.getItem('token'));
-        await getCartData(localStorage.getItem('token'));
+        await loadCartData(localStorage.getItem('token'));
       }
     };
-    loadListData();
+    loadData();
   }, []);
+
+  // .......
+  // Save cartitems to localStorage whenever cart changes
+  useEffect(() => {
+    if (cartitems && Object.keys(cartitems).length > 0) {
+      localStorage.setItem('cartitems', JSON.stringify(cartitems));
+    }
+  }, [cartitems]);
 
   const contextValue = {
     food_list,

@@ -13,6 +13,7 @@ function FoodItem(Props) {
           alt=""
           className="rounded-t-md "
         />
+        {console.log(cartitems)}
         {!cartitems[Props.fooditem._id] ? (
           <img
             src={assets.add_icon_white}

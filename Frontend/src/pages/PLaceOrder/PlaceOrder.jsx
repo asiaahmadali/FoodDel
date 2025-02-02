@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
@@ -26,11 +26,24 @@ function PlaceOrder() {
     setData((data) => ({ ...data, [name]: value }));
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, []);
+  // submitHandler
+  const placeorder = async (e) => {
+    e.preventDefault();
+    const orderItems = [];
+    food_list.map((item) => {
+      if (cartitems[item._id] > 0) {
+        let itemInfo = item;
+        itemInfo['quantity'] = cartitems[item._id];
+        orderItems.push(itemInfo);
+      }
+    });
+    console.log(orderItems);
+  };
   return (
-    <form className="flex justify-between font-outfit m-[100px]">
+    <form
+      className="flex justify-between font-outfit m-[100px]"
+      onSubmit={placeorder}
+    >
       {/* left part */}
       <div className="flex flex-col gap-[15px]">
         <h1 className="text-2xl font-bold mb-[20px]">Delivery Information</h1>
@@ -147,6 +160,7 @@ function PlaceOrder() {
         {/* proceed btn */}
         <button
           onClick={() => navigate('/placeorder')}
+          type="submit"
           className="bg-orange-500 p-[10px] my-[10px] text-white rounded-sm"
         >
           Proceed to checkout
