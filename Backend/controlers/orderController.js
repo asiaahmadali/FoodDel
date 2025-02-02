@@ -8,6 +8,7 @@ dotenv.config();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const placeOrder = async (req, res) => {
   const { userId, items, amount, address } = req.body;
+  const frontentURL = 'http://localhost:5173';
   try {
     const Order = await orderModel.create({
       userId,
@@ -54,4 +55,32 @@ const placeOrder = async (req, res) => {
   }
 };
 
-export default placeOrder;
+// order payment verifications (professional way is to use webhooks)
+
+const verifyOrder = async (req, res) => {
+  const { orderId, success } = req.body;
+  try {
+    if (success === 'true') {
+      await orderModel.findByIdAndUpdate(orderId, { payment: true });
+      res.json({ success: true, message: 'paid' });
+    } else {
+      await orderModel.findByIdAndDelete(orderId);
+      res.json({ success: false, message: 'not paid' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: 'error' });
+  }
+};
+
+// users orders
+const userOrders = async (req, res) => {
+  try {
+    const orders = await orderModel.find({ userId: req.body.userId });
+    res.json({ success: true, data: orders });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: 'error' });
+  }
+};
+export { verifyOrder, placeOrder, userOrders };
