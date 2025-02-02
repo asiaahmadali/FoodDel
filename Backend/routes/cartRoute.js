@@ -8,7 +8,7 @@ import {
 } from '../controlers/cartController.js';
 
 cartRouter.post('/add', isLogedIn, addCart);
-cartRouter.get('/getcart', isLogedIn, getCartData);
+cartRouter.post('/getcart', isLogedIn, getCartData);
 cartRouter.post('/delete', isLogedIn, deleteFromCart);
 
 export default cartRouter;

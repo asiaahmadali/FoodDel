@@ -2,7 +2,8 @@ import userModel from '../models/usermodel.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
-
+import dotenv from 'dotenv';
+dotenv.config();
 // login user
 const Login = async (req, res) => {
   const { email, password } = req.body;

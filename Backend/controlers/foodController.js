@@ -17,9 +17,7 @@ const addFood = async (req, res) => {
       category,
     });
 
-    console.log(req.body, 'foodissss', addedFood);
-
-    res.json({ success: true, message: 'Food added successfully' });
+    res.json({ success: true, data: addedFood });
   } catch (error) {
     console.error('Error adding food:', error);
     res.json({ success: false, message: 'error, Please try again.' });
