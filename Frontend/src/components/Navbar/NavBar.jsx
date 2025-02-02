@@ -81,7 +81,10 @@ function NavBar() {
                   className="absolute hidden right-0 custom-dropdown
                  z-1"
                 >
-                  <li className="flex gap-[8px] cursor-pointer items-center ">
+                  <li
+                    className="flex gap-[8px] cursor-pointer items-center "
+                    onClick={() => navigate('/myorders')}
+                  >
                     <img src={assets.bag_icon} alt="" className="w-[20px]" />
                     <p className="cursor-pointer hover:text-orange-400">
                       Orders

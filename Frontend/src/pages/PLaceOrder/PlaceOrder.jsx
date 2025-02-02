@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import axios from 'axios';
 
 function PlaceOrder() {
   const navigate = useNavigate();
@@ -37,8 +38,30 @@ function PlaceOrder() {
         orderItems.push(itemInfo);
       }
     });
-    console.log(orderItems);
+    let orderData = {
+      address: data,
+      items: orderItems,
+      amount: totalpriceofCart() + 10,
+    };
+    let response = await axios.post(`${url}/api/order/placeorder`, orderData, {
+      headers: { token },
+    });
+    console.log(response);
+    if (response.data.success) {
+      const { session_url } = response.data;
+      window.location.replace(session_url);
+    } else {
+      alert('error');
+    }
   };
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/cart');
+    } else if (totalpriceofCart() === 0) {
+      navigate('/cart');
+    }
+  }, [token]);
   return (
     <form
       className="flex justify-between font-outfit m-[100px]"
@@ -53,6 +76,7 @@ function PlaceOrder() {
             type="text"
             placeholder="First Name"
             name="firstName"
+            required
             onChange={changeHandler}
             value={data.firstName}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
@@ -61,6 +85,7 @@ function PlaceOrder() {
             type="text"
             placeholder="Last Name"
             name="lastName"
+            required
             onChange={changeHandler}
             value={data.lastName}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
@@ -68,6 +93,7 @@ function PlaceOrder() {
         </div>
         <input
           type="email"
+          required
           placeholder="Email"
           name="email"
           onChange={changeHandler}
@@ -78,6 +104,7 @@ function PlaceOrder() {
           type="text"
           placeholder="Street"
           name="street"
+          required
           onChange={changeHandler}
           value={data.street}
           className="focus:outline-none w-full border-[1px] border-gray-400 p-[8px] rounded-md "
@@ -86,6 +113,7 @@ function PlaceOrder() {
         <div className="flex gap-2">
           <input
             type="text"
+            required
             placeholder="City"
             name="city"
             onChange={changeHandler}
@@ -96,6 +124,7 @@ function PlaceOrder() {
             type="text"
             placeholder="State"
             name="state"
+            required
             onChange={changeHandler}
             value={data.state}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
@@ -107,6 +136,7 @@ function PlaceOrder() {
             type="text"
             placeholder="ZipCode"
             name="zipcode"
+            required
             onChange={changeHandler}
             value={data.zipcode}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
@@ -115,6 +145,7 @@ function PlaceOrder() {
             type="text"
             placeholder="Country"
             name="country"
+            required
             onChange={changeHandler}
             value={data.country}
             className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
@@ -124,6 +155,7 @@ function PlaceOrder() {
           type="text"
           placeholder="Phone"
           name="phone"
+          required
           onChange={changeHandler}
           value={data.phone}
           className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
@@ -163,7 +195,7 @@ function PlaceOrder() {
           type="submit"
           className="bg-orange-500 p-[10px] my-[10px] text-white rounded-sm"
         >
-          Proceed to checkout
+          Proceed to Payment
         </button>
       </div>
     </form>
