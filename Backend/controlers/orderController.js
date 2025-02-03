@@ -16,7 +16,7 @@ const placeOrder = async (req, res) => {
       amount,
       address,
     });
-    // cleaning user cart data
+    // cleaning user cart data from cart
     await userModel.findByIdAndUpdate(userId, { cartData: {} });
     // create stripe payment link
     const line_items = items.map((item) => ({
