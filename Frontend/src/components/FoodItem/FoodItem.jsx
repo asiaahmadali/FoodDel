@@ -38,7 +38,7 @@ function FoodItem(Props) {
           </div>
         )}
       </div>
-      {/* food items information */}
+      {/* food items info */}
       <div className="p-[10px]">
         <div className="flex justify-between items-center my-[10px]">
           <p className="text-[16px] font-semibold font-outfit">
