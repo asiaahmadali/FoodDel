@@ -52,7 +52,7 @@ function FoodItem(Props) {
             {Props.fooditem.description}
           </p>
         </div>
-        {/* price */}
+        {/* product price */}
         <div>
           <p className="text-red-700 font-bold text-xl my-[10px]">
             {'$'}
