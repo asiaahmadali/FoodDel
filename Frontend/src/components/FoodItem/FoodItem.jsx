@@ -11,7 +11,7 @@ function FoodItem(Props) {
         <img
           src={'http://localhost:3000/images/' + Props.fooditem.image}
           alt=""
-          className="rounded-t-md "
+          className="rounded-t-md w-full h-[220px] object-cover"
         />
         {console.log(cartitems)}
         {!cartitems[Props.fooditem._id] ? (
@@ -38,7 +38,7 @@ function FoodItem(Props) {
           </div>
         )}
       </div>
-      {/* food items info */}
+      {/* food items information */}
       <div className="p-[10px]">
         <div className="flex justify-between items-center my-[10px]">
           <p className="text-[16px] font-semibold font-outfit">
