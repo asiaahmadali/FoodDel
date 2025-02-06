@@ -46,7 +46,7 @@ function FoodItem(Props) {
           </p>
           <img src={assets.rating_stars} alt="" className="w-[65px]" />
         </div>
-        {/* description of fooditem */}
+        {/* description*/}
         <div>
           <p className="mt-[20px] text-[14px] font-outfit text-[#676767]">
             {Props.fooditem.description}
