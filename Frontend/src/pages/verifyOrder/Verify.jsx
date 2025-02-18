@@ -1,10 +1,11 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { StoreContext } from '../../context/StoreContext';
+import { useEffect, useContext } from 'react';
 
 function Verify() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const backendURL = 'http://localhost:3000';
+  const { backendURL } = useContext(StoreContext);
   const success = searchParams.get('success');
   const orderId = searchParams.get('orderId');
   const navigate = useNavigate();

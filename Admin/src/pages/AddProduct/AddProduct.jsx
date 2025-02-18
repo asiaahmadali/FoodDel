@@ -4,6 +4,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 function AddProduct() {
+  // backendurl
+  const backendurl = `http://localhost:3000`;
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: '',
@@ -28,8 +30,7 @@ function AddProduct() {
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
-    // url for add
-    const url = 'http://localhost:3000';
+
     // form handling
 
     const formData = new FormData();
@@ -41,7 +42,7 @@ function AddProduct() {
 
     // api call
 
-    const response = await axios.post(`${url}/api/food/add`, formData);
+    const response = await axios.post(`${backendurl}/api/food/add`, formData);
     if (response.data.success) {
       setData({
         name: '',

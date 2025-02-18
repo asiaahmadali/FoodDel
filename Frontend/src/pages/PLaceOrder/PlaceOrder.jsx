@@ -5,9 +5,8 @@ import axios from 'axios';
 
 function PlaceOrder() {
   const navigate = useNavigate();
-  const { totalpriceofCart, token, food_list, cartitems } =
+  const { totalpriceofCart, token, food_list, cartitems, backendURL } =
     useContext(StoreContext);
-  const url = 'http://localhost:3000';
 
   const [data, setData] = useState({
     firstName: '',
@@ -43,9 +42,13 @@ function PlaceOrder() {
       items: orderItems,
       amount: totalpriceofCart() + 10,
     };
-    let response = await axios.post(`${url}/api/order/placeorder`, orderData, {
-      headers: { token },
-    });
+    let response = await axios.post(
+      `${backendURL}/api/order/placeorder`,
+      orderData,
+      {
+        headers: { token },
+      }
+    );
     console.log(response);
     if (response.data.success) {
       const { session_url } = response.data;

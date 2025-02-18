@@ -11,8 +11,7 @@ function Login() {
   const navigate = useNavigate();
 
   // get settoken function from context
-  const { setToken } = useContext(StoreContext);
-  const url = 'http://localhost:3000';
+  const { setToken, backendURL } = useContext(StoreContext);
 
   const changeHandler = (e) => {
     const name = e.target.name;
@@ -23,7 +22,7 @@ function Login() {
   // login handler
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post(`${url}/api/user/login`, data);
+    const response = await axios.post(`${backendURL}/api/user/login`, data);
     if (response.data.success) {
       setToken(response.data.token);
       localStorage.setItem('token', response.data.token);

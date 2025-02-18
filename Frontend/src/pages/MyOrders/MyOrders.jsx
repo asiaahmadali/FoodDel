@@ -5,12 +5,12 @@ import { assets } from '../../assets/assets';
 
 function MyOrders() {
   const [data, setData] = useState([]);
-  const url = 'http://localhost:3000';
-  const { token } = useContext(StoreContext);
+
+  const { token, backendURL } = useContext(StoreContext);
 
   const fetchOrders = async () => {
     const response = await axios.post(
-      `${url}/api/order/userorders`,
+      `${backendURL}/api/order/userorders`,
       {},
       { headers: { token } }
     );

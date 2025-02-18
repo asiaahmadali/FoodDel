@@ -8,6 +8,7 @@ const StoreContextprovider = (Props) => {
   const [food_list, setFoodList] = useState([]);
   // jwt token
   const [token, setToken] = useState('');
+  const backendURL = 'http://localhost:3000';
 
   // when user add item first time in cart
   const addToCart = async (itemid) => {
@@ -19,7 +20,7 @@ const StoreContextprovider = (Props) => {
 
     if (token) {
       await axios.post(
-        'http://localhost:3000/api/cart/add',
+        `${backendURL}/api/cart/add`,
         { itemid },
         { headers: { token } }
       );
@@ -31,7 +32,7 @@ const StoreContextprovider = (Props) => {
     setCartItems((prev) => ({ ...prev, [itemid]: prev[itemid] - 1 }));
     if (token) {
       await axios.post(
-        'https://localhost:3000/api/cart/delete',
+        `${backendURL}/api/cart/delete`,
         { itemid },
         { headers: { token } }
       );
@@ -56,14 +57,14 @@ const StoreContextprovider = (Props) => {
 
   // fetch food list
   const getFoodList = async () => {
-    const response = await axios.get('http://localhost:3000/api/food/list');
+    const response = await axios.get(`${backendURL}/api/food/list`);
     setFoodList(response.data.data);
   };
 
   // prevent loading cart data
   const loadCartData = async (token) => {
     const response = await axios.post(
-      'http://localhost:3000/api/cart/getcart',
+      `${backendURL}/api/cart/getcart`,
       {},
       { headers: { token } }
     );
@@ -100,6 +101,7 @@ const StoreContextprovider = (Props) => {
     totalpriceofCart,
     token,
     setToken,
+    backendURL,
   };
 
   return (

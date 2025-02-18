@@ -4,11 +4,11 @@ import { toast } from 'react-toastify';
 
 function ListProducts() {
   const [list, setList] = useState([]);
-  const url = 'http://localhost:3000';
+  const backendurl = `http://localhost:3000`;
 
   // getlist api
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/list`);
+    const response = await axios.get(`${backendurl}/api/food/list`);
     console.log(response.data);
     if (response.data.success) {
       setList(response.data.data);
@@ -18,7 +18,9 @@ function ListProducts() {
   };
 
   const removeItem = async (itemid) => {
-    const response = await axios.post(`${url}/api/food/delete`, { id: itemid });
+    const response = await axios.post(`${backendurl}/api/food/delete`, {
+      id: itemid,
+    });
     await fetchList();
     if (response.data.success) {
       toast.success(response.data.message);
@@ -56,7 +58,7 @@ function ListProducts() {
             >
               <div className="flex justify-start justify-items-between">
                 <img
-                  src={`${url}/images/${item.image}`}
+                  src={`${backendurl}/images/${item.image}`}
                   alt={item.name}
                   className="md:w-[60px] md:h-[50px] w-[30px] h-[30px]"
                 />
