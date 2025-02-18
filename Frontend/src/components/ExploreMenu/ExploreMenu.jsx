@@ -21,6 +21,7 @@ function ExploreMenu(Props) {
                 )
               }
               className="flex flex-col items-center gap-3"
+              data-aos="flip-left"
             >
               <img
                 src={item.menu_image}

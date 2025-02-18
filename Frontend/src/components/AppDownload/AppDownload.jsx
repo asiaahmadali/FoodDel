@@ -15,11 +15,13 @@ export default function AppDownload() {
           src={assets.play_store}
           alt="Play Store"
           className="max-w-[200px] cursor-pointer hover:scale-[1.06] mb-4 sm:mb-0"
+          data-aos="flip-left"
         />
         <img
           src={assets.app_store}
           alt="App Store"
           className="max-w-[200px] cursor-pointer hover:scale-[1.06] mb-4 sm:mb-0"
+          data-aos="flip-left"
         />
       </div>
     </div>

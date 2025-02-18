@@ -33,7 +33,10 @@ function Login() {
 
   return (
     <div className="flex bg-[url(log7.avif)]  bg-cover bg-center bg-no-repeat justify-center items-center min-h-screen bg-gray-900 font-outfit">
-      <div className="w-full max-w-md m-[10px] bg-opacity-50 p-8 bg-gray-800 shadow-gray-200 shadow-md rounded-lg border border-gray-700">
+      <div
+        data-aos="flip-right"
+        className="w-full max-w-md m-[10px] bg-opacity-50 p-8 bg-gray-800 shadow-gray-200 shadow-md rounded-lg border border-gray-700"
+      >
         <h2 className="text-3xl font-bold text-center text-white mb-6">
           Login
         </h2>
@@ -54,6 +57,7 @@ function Login() {
               className="w-full px-4 py-[12px] mt-2 border rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-red-500"
               placeholder="Your email"
               required
+              data-aos="zoom-in"
             />
           </div>
 
@@ -73,6 +77,7 @@ function Login() {
               className="w-full px-4 py-[12px] mt-2 border rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-red-500"
               placeholder="Your password"
               required
+              data-aos="zoom-in"
             />
           </div>
 

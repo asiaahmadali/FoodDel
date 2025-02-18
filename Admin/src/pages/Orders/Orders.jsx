@@ -42,6 +42,7 @@ function Orders() {
             <div
               className="flex flex-col gap-4 justify-between items-start p-4 bg-white border border-orange-500 rounded-lg shadow-lg"
               key={orderindex}
+              data-aos="zoom-in"
             >
               <img
                 src={assets.parcel_icon}

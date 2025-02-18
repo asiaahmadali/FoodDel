@@ -69,7 +69,10 @@ function PlaceOrder() {
       onSubmit={placeorder}
     >
       {/* Left part */}
-      <div className="flex flex-col gap-[15px] w-full lg:w-1/2">
+      <div
+        className="flex flex-col gap-[15px] w-full lg:w-1/2"
+        data-aos="zoom-in"
+      >
         <h1 className="text-2xl font-bold mb-[20px] text-gray-800">
           Delivery Information
         </h1>
@@ -169,7 +172,10 @@ function PlaceOrder() {
       </div>
 
       {/* Right part */}
-      <div className="w-full lg:w-1/3 bg-white p-[20px] rounded-lg shadow-md">
+      <div
+        className="w-full lg:w-1/3 bg-white p-[20px] rounded-lg shadow-md"
+        data-aos="flip-left"
+      >
         <h1 className="text-xl font-bold mb-[10px] text-gray-800">
           Cart Total
         </h1>

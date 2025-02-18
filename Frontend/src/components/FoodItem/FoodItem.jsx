@@ -5,7 +5,7 @@ import { StoreContext } from '../../context/StoreContext';
 function FoodItem(Props) {
   const { cartitems, addToCart, removeFromCart } = useContext(StoreContext);
   return (
-    <div className="rounded-[14px] m-auto shadow-custom">
+    <div className="rounded-[14px] m-auto shadow-custom" data-aos="zoom-in">
       {/* food item image */}
       <div className="relative">
         <img

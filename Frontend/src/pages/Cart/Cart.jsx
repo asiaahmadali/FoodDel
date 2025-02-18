@@ -19,6 +19,7 @@ function Cart() {
                 <div
                   key={index}
                   className="grid grid-cols-1 sm:grid-cols-6 gap-4 place-items-center mb-[20px] sm:mb-[40px]"
+                  data-aos="fade-left"
                 >
                   {/* Item Name */}
                   <div className="sm:col-span-1">
@@ -70,10 +71,10 @@ function Cart() {
         })}
       </div>
 
-      {/* cart total and promo code */}
+      {/* cart total  */}
       <div className="flex flex-col lg:flex-row justify-between mt-[50px] gap-[30px]">
         {/* total amount */}
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-1/2 " data-aos="zoom-in">
           <h1 className="text-2xl font-bold mb-[10px] text-gray-800">
             Cart Total
           </h1>
@@ -106,6 +107,7 @@ function Cart() {
               console.log('Navigating to /placeorder'); // Debugging log
               navigate('/placeorder');
             }}
+            data-aos="zoom-in"
             className="w-full mt-[20px] py-[12px] bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-300"
           >
             Proceed to Checkout

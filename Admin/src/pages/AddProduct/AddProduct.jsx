@@ -60,6 +60,7 @@ function AddProduct() {
     <div>
       <form
         onSubmit={SubmitHandler}
+        data-aos="flip-left"
         className="m-[30px]  text-[#6d6d6d] flex flex-col gap-[10px] w-[70%] font-outfit text-[15px]"
       >
         {/* product image */}

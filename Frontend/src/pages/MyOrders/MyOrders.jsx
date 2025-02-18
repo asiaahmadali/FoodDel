@@ -32,6 +32,7 @@ function MyOrders() {
             <div
               className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 place-items-center text-[#454545] border-[1px]  border-orange-500 p-[20px] justify-between w-full"
               key={orderindex}
+              data-aos="zoom-in"
             >
               <img src={assets.parcel_icon} alt="" className="w-[55px]" />
               <p>

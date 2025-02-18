@@ -18,9 +18,9 @@ function App() {
   const location = useLocation();
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Set animation duration (optional)
-      easing: 'ease', // Set easing function (optional)
-      once: true, // Animation will only happen once (optional)
+      duration: 1000,
+      easing: 'ease',
+      once: true,
     });
   }, []);
   return (

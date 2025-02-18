@@ -51,6 +51,7 @@ function ListProducts() {
           return (
             <div
               key={index}
+              data-aos="zoom-in"
               className="grid  text-[12px] gap-4 md:text-[16px] grid-cols-4 md:grid-cols-5 items-center p-[10px] border-[1px] border-black border-opacity-[70%]"
             >
               <div className="flex justify-start justify-items-between">

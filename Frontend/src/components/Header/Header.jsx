@@ -1,9 +1,12 @@
 function Header() {
   return (
-    <div className="md:my-[100px] my-[15px] ">
+    <div className="md:my-[100px] my-[15px] " data-aos="zoom-in">
       {/* header div */}
       <div className="bg-[url(head.avif)] rounded-md bg-no-repeat bg-center flex items-center justify-center bg-cover min-h-[450px] w-full sm:min-h-[450px] xs:min-h-[250px]">
-        <div className="flex text-white flex-col gap-2 items-center justify-center">
+        <div
+          data-aos="zoom-in"
+          className="flex text-white flex-col gap-2 items-center justify-center"
+        >
           <h1 className=" font-outfit text-2xl md:text-5xl font-bold w-[280px] md:w-[450px]">
             Order your favourite food here
           </h1>

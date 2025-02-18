@@ -35,7 +35,10 @@ function SignUp() {
 
   return (
     <div className="flex justify-center bg-[url(log5.avif)]  bg-cover bg-center bg-no-repeat items-center min-h-screen bg-gray-900 font-outfit">
-      <div className="w-full max-w-lg m-[10px] bg-opacity-50 p-8 bg-gray-800 rounded-lg  shadow-gray-200 shadow-md border border-gray-700">
+      <div
+        data-aos="flip-right"
+        className="w-full max-w-lg m-[10px] bg-opacity-50 p-8 bg-gray-800 rounded-lg  shadow-gray-200 shadow-md border border-gray-700"
+      >
         <h2 className="text-3xl font-bold text-center text-white mb-6">
           Create Account
         </h2>

@@ -21,7 +21,10 @@ function NavBar() {
     <div className="md:px-[100px] px-[20px] py-[20px] bg-gray-100 overflow-hidden">
       <div className="flex justify-between items-center max-w-full">
         <Link to="/">
-          <h1 className="text-red-600 font-bold  md:text-4xl text-3xl">
+          <h1
+            data-aos="flip-left"
+            className="text-red-600  font-bold  md:text-4xl text-3xl"
+          >
             QuickBite
           </h1>
         </Link>
@@ -80,7 +83,7 @@ function NavBar() {
           {/* Sign in or profile */}
           <div className="hidden md:block">
             {!token ? (
-              <button className="bg-red-500 font-outfit px-3 py-2 transition-all duration-300 ease-in-out hover:bg-red-700 text-white rounded-md">
+              <button className="bg-red-600 font-outfit px-3 py-2 transition-all duration-300 ease-in-out hover:bg-red-700 text-white rounded-md">
                 <Link to="/signup" className="hover:text-white">
                   Sign in
                 </Link>
