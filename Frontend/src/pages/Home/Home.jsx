@@ -7,7 +7,7 @@ import AppDownload from '../../components/AppDownload/AppDownload';
 function Home() {
   const [category, setCategory] = useState('All');
   return (
-    <div className="p-[100px]">
+    <div className="lg:px-[100px] px-[20px] ">
       <Header />
       <ExploreMenu category={category} setCategory={setCategory} />
       <FoodDisplay category={category} />

@@ -62,16 +62,19 @@ function PlaceOrder() {
       navigate('/cart');
     }
   }, [token]);
+
   return (
     <form
-      className="flex justify-between font-outfit m-[100px]"
+      className="flex flex-col lg:flex-row justify-between font-outfit m-[20px] lg:m-[100px] gap-[20px]"
       onSubmit={placeorder}
     >
-      {/* left part */}
-      <div className="flex flex-col gap-[15px]">
-        <h1 className="text-2xl font-bold mb-[20px]">Delivery Information</h1>
+      {/* Left part */}
+      <div className="flex flex-col gap-[15px] w-full lg:w-1/2">
+        <h1 className="text-2xl font-bold mb-[20px] text-gray-800">
+          Delivery Information
+        </h1>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <input
             type="text"
             placeholder="First Name"
@@ -79,7 +82,7 @@ function PlaceOrder() {
             required
             onChange={changeHandler}
             value={data.firstName}
-            className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
+            className="focus:outline-none border-[1px] border-gray-400 p-[10px] rounded-md w-full sm:w-[49%]"
           />
           <input
             type="text"
@@ -88,9 +91,10 @@ function PlaceOrder() {
             required
             onChange={changeHandler}
             value={data.lastName}
-            className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
+            className="focus:outline-none border-[1px] border-gray-400 p-[10px] rounded-md w-full sm:w-[49%]"
           />
         </div>
+
         <input
           type="email"
           required
@@ -98,8 +102,9 @@ function PlaceOrder() {
           name="email"
           onChange={changeHandler}
           value={data.email}
-          className="focus:outline-none w-full border-[1px] border-gray-400 p-[8px] rounded-md "
+          className="focus:outline-none w-full border-[1px] border-gray-400 p-[10px] rounded-md "
         />
+
         <input
           type="text"
           placeholder="Street"
@@ -107,10 +112,10 @@ function PlaceOrder() {
           required
           onChange={changeHandler}
           value={data.street}
-          className="focus:outline-none w-full border-[1px] border-gray-400 p-[8px] rounded-md "
+          className="focus:outline-none w-full border-[1px] border-gray-400 p-[10px] rounded-md "
         />
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <input
             type="text"
             required
@@ -118,7 +123,7 @@ function PlaceOrder() {
             name="city"
             onChange={changeHandler}
             value={data.city}
-            className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
+            className="focus:outline-none border-[1px] border-gray-400 p-[10px] rounded-md w-full sm:w-[49%]"
           />
           <input
             type="text"
@@ -127,11 +132,11 @@ function PlaceOrder() {
             required
             onChange={changeHandler}
             value={data.state}
-            className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
+            className="focus:outline-none border-[1px] border-gray-400 p-[10px] rounded-md w-full sm:w-[49%]"
           />
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <input
             type="text"
             placeholder="ZipCode"
@@ -139,7 +144,7 @@ function PlaceOrder() {
             required
             onChange={changeHandler}
             value={data.zipcode}
-            className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
+            className="focus:outline-none border-[1px] border-gray-400 p-[10px] rounded-md w-full sm:w-[49%]"
           />
           <input
             type="text"
@@ -148,9 +153,10 @@ function PlaceOrder() {
             required
             onChange={changeHandler}
             value={data.country}
-            className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
+            className="focus:outline-none border-[1px] border-gray-400 p-[10px] rounded-md w-full sm:w-[49%]"
           />
         </div>
+
         <input
           type="text"
           placeholder="Phone"
@@ -158,42 +164,45 @@ function PlaceOrder() {
           required
           onChange={changeHandler}
           value={data.phone}
-          className="focus:outline-none border-[1px] border-gray-400 p-[8px] rounded-md "
+          className="focus:outline-none border-[1px] border-gray-400 p-[10px] rounded-md "
         />
       </div>
 
-      {/* right part */}
-
-      <div className="w-1/3">
-        <h1 className="text-xl font-bold mb-[10px]">Carts Total</h1>
+      {/* Right part */}
+      <div className="w-full lg:w-1/3 bg-white p-[20px] rounded-lg shadow-md">
+        <h1 className="text-xl font-bold mb-[10px] text-gray-800">
+          Cart Total
+        </h1>
         <div>
-          {/* total */}
-          <div className="flex justify-between items-center">
-            <p>Subtotal </p>
-            <p>${totalpriceofCart()}</p>
+          {/* Subtotal */}
+          <div className="flex justify-between items-center mb-[10px]">
+            <p className="text-gray-600">Subtotal</p>
+            <p className="text-gray-800">${totalpriceofCart()}</p>
           </div>
-
           <hr className="my-[5px]" />
 
-          {/* delivery fee */}
-          <div className="flex justify-between items-center">
-            <p>${totalpriceofCart() === 0 ? 0 : 10}</p>
-            <p>${10}</p>
+          {/* Delivery Fee */}
+          <div className="flex justify-between items-center mb-[10px]">
+            <p className="text-gray-600">Delivery Fee</p>
+            <p className="text-gray-800">
+              ${totalpriceofCart() === 0 ? 0 : 10}
+            </p>
           </div>
-
           <hr className="my-[5px]" />
 
-          {/* with delivery charges */}
-          <div className="flex justify-between items-center">
-            <p>Total</p>
-            <p>${totalpriceofCart() === 0 ? 0 : totalpriceofCart() + 10}</p>
+          {/* Total */}
+          <div className="flex justify-between items-center mb-[20px]">
+            <p className="text-gray-600">Total</p>
+            <p className="text-gray-800">
+              ${totalpriceofCart() === 0 ? 0 : totalpriceofCart() + 10}
+            </p>
           </div>
         </div>
-        {/* proceed btn */}
+
+        {/* Proceed Button */}
         <button
-          onClick={() => navigate('/placeorder')}
           type="submit"
-          className="bg-orange-500 p-[10px] my-[10px] text-white rounded-sm"
+          className="w-full bg-red-500 text-white p-[12px] rounded-md hover:bg-red-600 transition-all duration-300 mt-[10px]"
         >
           Proceed to Payment
         </button>

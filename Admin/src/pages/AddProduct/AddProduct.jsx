@@ -82,7 +82,7 @@ function AddProduct() {
         </div>
 
         {/* product name */}
-        <div className="flex flex-col w-[30vw] gap-[8px]">
+        <div className="flex flex-col w-[60vw] md:w-[30vw] gap-[8px]">
           <p>product name</p>
           <input
             type="text"
@@ -96,7 +96,7 @@ function AddProduct() {
         </div>
 
         {/* product description */}
-        <div className="flex flex-col w-[30vw] gap-[8px]">
+        <div className="flex flex-col w-[60vw] md:w-[30vw] gap-[8px]">
           <p>Product description</p>
           <textarea
             name="description"
@@ -109,7 +109,7 @@ function AddProduct() {
           ></textarea>
         </div>
 
-        <div className="flex gap-[20px] w-[30vw] ">
+        <div className="flex md:flex-row flex-col gap-[20px] w-[60vw] md:w-[30vw] ">
           {/* product cagtegory */}
           <div className="flex flex-col gap-[8px]">
             <p>product category</p>

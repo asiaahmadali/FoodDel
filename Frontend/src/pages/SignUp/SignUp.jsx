@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
+
 function SignUp() {
   const url = 'http://localhost:3000';
   const [data, setData] = useState({
@@ -11,7 +11,7 @@ function SignUp() {
     password: '',
   });
   const navigate = useNavigate();
-  // get settoken fyntion fron context
+  // get settoken function from context
   const { setToken } = useContext(StoreContext);
 
   const changeHandler = (e) => {
@@ -20,7 +20,7 @@ function SignUp() {
     setData((data) => ({ ...data, [name]: value }));
   };
 
-  //  signup handler
+  // signup handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await axios.post(`${url}/api/user/signup`, data);
@@ -34,16 +34,16 @@ function SignUp() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen font-outfit ">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
+    <div className="flex justify-center bg-[url(log5.avif)]  bg-cover bg-center bg-no-repeat items-center min-h-screen bg-gray-900 font-outfit">
+      <div className="w-full max-w-lg m-[10px] bg-opacity-50 p-8 bg-gray-800 rounded-lg  shadow-gray-200 shadow-md border border-gray-700">
+        <h2 className="text-3xl font-bold text-center text-white mb-6">
           Create Account
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-gray-200"
             >
               Full Name
             </label>
@@ -53,7 +53,7 @@ function SignUp() {
               name="name"
               onChange={changeHandler}
               value={data.name}
-              className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+              className="w-full px-4 py-[12px] mt-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-red-500 bg-gray-700 text-white"
               placeholder="Your name"
               required
             />
@@ -62,7 +62,7 @@ function SignUp() {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-gray-200"
             >
               Email Address
             </label>
@@ -72,7 +72,7 @@ function SignUp() {
               name="email"
               onChange={changeHandler}
               value={data.email}
-              className="w-full px-4 py-2 mt-1 border rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-orange-500"
+              className="w-full px-4 py-[12px] mt-2 border rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-red-500"
               placeholder="Your email"
               required
             />
@@ -81,7 +81,7 @@ function SignUp() {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-gray-200"
             >
               Password
             </label>
@@ -91,7 +91,7 @@ function SignUp() {
               name="password"
               onChange={changeHandler}
               value={data.password}
-              className="w-full  px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+              className="w-full px-4 py-[12px] mt-2 border rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-red-500"
               placeholder="Your password"
               required
             />
@@ -102,16 +102,16 @@ function SignUp() {
               type="checkbox"
               id="terms"
               name="terms"
-              className="h-4 w-4 text-blue-500 border-gray-300 rounded"
+              className="h-4 w-4 text-red-500 border-gray-500 rounded"
               required
             />
-            <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
+            <label htmlFor="terms" className="ml-2 text-sm text-gray-300">
               I agree to the{' '}
-              <a href="/terms" className="text-blue-500 hover:underline">
+              <a href="/terms" className="text-red-500 hover:underline">
                 Terms and Conditions
               </a>{' '}
               and{' '}
-              <a href="/privacy" className="text-blue-500 hover:underline">
+              <a href="/privacy" className="text-red-500 hover:underline">
                 Privacy Policy
               </a>
             </label>
@@ -119,15 +119,15 @@ function SignUp() {
 
           <button
             type="submit"
-            className="w-full py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 focus:outline-none outline-none"
+            className="w-full py-[14px] bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none transition-all duration-300"
           >
             Create Account
           </button>
         </form>
 
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-4 text-center text-sm text-gray-300">
           Already have an account?{' '}
-          <a href="/login" className="text-blue-500 hover:underline">
+          <a href="/login" className="text-red-500 hover:underline">
             Login
           </a>
         </p>

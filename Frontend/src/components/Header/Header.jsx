@@ -1,20 +1,18 @@
 function Header() {
   return (
-    <div>
+    <div className="md:my-[100px] my-[15px] ">
       {/* header div */}
-      <div className="bg-[url(header_img.png)] rounded-md bg-no-repeat bg-cover min-h-[450px] flex items-center p-[100px]">
-        {/* header content div */}
-        <div className="flex flex-col gap-2">
-          <h1 className="text-white font-outfit text-5xl font-bold w-[450px]">
+      <div className="bg-[url(head.avif)] rounded-md bg-no-repeat bg-center flex items-center justify-center bg-cover min-h-[450px] w-full sm:min-h-[450px] xs:min-h-[250px]">
+        <div className="flex text-white flex-col gap-2 items-center justify-center">
+          <h1 className=" font-outfit text-2xl md:text-5xl font-bold w-[280px] md:w-[450px]">
             Order your favourite food here
           </h1>
-          <p className="text-white w-[400px] mt-[10px]">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
-            hic error rerum molestiae. Harum officiis ea provident ducimus odio
-            eum.
+          <p className=" w-[280px] md:w-[400px] mt-[10px]">
+            welcome to my website where we bring customer satisfaction and best
+            services for home delivery.
           </p>
-          <button className="p-[12px] bg-white rounded-full w-[150px] font-outfit mt-[5px]">
-            view menu
+          <button className="p-[12px] bg-red-500 text-white hover:bg-red-400 rounded-full w-[150px] font-outfit mt-[5px]">
+            <a href="#menu">view menu</a>
           </button>
         </div>
       </div>

@@ -32,11 +32,11 @@ function ListProducts() {
   }, []);
 
   return (
-    <div className="flex flex-col m-[40px] font-outfit w-[70vw] ">
+    <div className="flex flex-col m-[10px] md:m-[40px] font-outfit w-[70vw] ">
       <h1 className="text-2xl font-bold mb-[20px]">All Food List</h1>
       {/* items title */}
 
-      <div className="grid grid-cols-6 gap-4 border-[1px] border-black border-b-0 border-opacity-[70%] p-[10px] bg-gray-100 items-center">
+      <div className="grid grid-cols-6 gap-2 text-[14px] md:text-[16px] md:gap-4 border-[1px] border-black border-b-0 border-opacity-[70%] p-[10px] bg-gray-100 items-center">
         <p>Image</p>
         <p>Name</p>
         <p>Category</p>
@@ -51,13 +51,13 @@ function ListProducts() {
           return (
             <div
               key={index}
-              className="grid grid-cols-6 items-center p-[10px] border-[1px] border-black border-opacity-[70%]"
+              className="grid text-[12px] gap-4 md:text-[16px] grid-cols-6 items-center p-[10px] border-[1px] border-black border-opacity-[70%]"
             >
               <div className="flex justify-start">
                 <img
                   src={`${url}/images/${item.image}`}
                   alt={item.name}
-                  className="w-[60px] h-[50px]"
+                  className="md:w-[60px] md:h-[50px] w-[30px] h-[30px]"
                 />
               </div>
 

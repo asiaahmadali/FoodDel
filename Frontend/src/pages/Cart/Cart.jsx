@@ -6,52 +6,64 @@ function Cart() {
   const { food_list, cartitems, removeFromCart, totalpriceofCart } =
     useContext(StoreContext);
   const navigate = useNavigate();
+
   return (
-    <div className="m-[120px] font-outfit">
+    <div className="m-[20px] md:m-[50px] lg:m-[120px] font-outfit">
       {/* cart items */}
       <div className="flex flex-col">
-        {/* items title */}
-        <div className="grid grid-cols-6 gap-4 mb-[10px] items-center">
-          <p>Item</p>
-          <p>Title</p>
-          <p>Quantity</p>
-          <p>Price</p>
-          <p>Total</p>
-          <p>Remove</p>
-        </div>
-        <hr className="mb-[10px] h-[2px]" />
         {food_list.map((item, index) => {
           if (cartitems[item._id] > 0) {
             return (
               <>
+                {/* Item details */}
                 <div
                   key={index}
-                  className="grid grid-cols-6 gap-4 items-center mb-[20px]"
+                  className="grid grid-cols-1 sm:grid-cols-6 gap-4 place-items-center mb-[20px] sm:mb-[40px]"
                 >
-                  <div className="flex justify-start">
+                  {/* Item Name */}
+                  <div className="sm:col-span-1">
+                    <p className="font-medium text-lg">{item.name}</p>
+                  </div>
+
+                  {/* Item Image on small screens below item name */}
+                  <div className="sm:col-span-1 flex  sm:mb-0 mb-[10px]">
                     <img
                       src={'http://localhost:3000/images/' + item.image}
-                      alt=""
-                      className="w-[80px]"
+                      alt={item.name}
+                      className="w-[100px] h-[70px]"
                     />
                   </div>
 
-                  <p>{item.name}</p>
+                  {/* Quantity */}
+                  <div className="sm:col-span-1">
+                    <p className="text-gray-600">
+                      Quantity: {cartitems[item._id]}
+                    </p>
+                  </div>
 
-                  <p>{cartitems[item._id]}</p>
+                  {/* Price */}
+                  <div className="sm:col-span-1">
+                    <p className="text-gray-600">Price:{'$' + item.price}</p>
+                  </div>
 
-                  <p>{'$' + item.price}</p>
+                  {/* Total */}
+                  <div className="sm:col-span-1">
+                    <p className="text-gray-600">
+                      Total:{'$' + item.price * cartitems[item._id]}
+                    </p>
+                  </div>
 
-                  <p>{'$' + item.price * cartitems[item._id]}</p>
-
-                  <p
-                    className="cursor-pointer font-bold"
-                    onClick={() => removeFromCart(item._id)}
-                  >
-                    x
-                  </p>
+                  {/* Remove Button */}
+                  <div className="sm:col-span-1">
+                    <p
+                      className="cursor-pointer font-bold text-red-500"
+                      onClick={() => removeFromCart(item._id)}
+                    >
+                      x
+                    </p>
+                  </div>
                 </div>
-                <hr className="my-[5px] " />
+                <hr className="my-[5px]" />
               </>
             );
           }
@@ -59,10 +71,12 @@ function Cart() {
       </div>
 
       {/* cart total and promo code */}
-      <div className="flex justify-between  mt-[100px]">
+      <div className="flex flex-col lg:flex-row justify-between mt-[50px] gap-[30px]">
         {/* total amount */}
-        <div className="w-1/2">
-          <h1 className="text-xl font-bold mb-[10px]">Carts Total</h1>
+        <div className="w-full lg:w-1/2">
+          <h1 className="text-2xl font-bold mb-[10px] text-gray-800">
+            Cart Total
+          </h1>
           <div>
             {/* total */}
             <div className="flex justify-between items-center">
@@ -88,25 +102,14 @@ function Cart() {
           </div>
           {/* proceed btn */}
           <button
-            onClick={() => navigate('/placeorder')}
-            className="bg-orange-500 p-[10px] my-[10px] text-white rounded-sm"
+            onClick={() => {
+              console.log('Navigating to /placeorder'); // Debugging log
+              navigate('/placeorder');
+            }}
+            className="w-full mt-[20px] py-[12px] bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-300"
           >
-            Proceed to checkout
+            Proceed to Checkout
           </button>
-        </div>
-        {/* promo code */}
-        <div className="flex flex-col gap-[10px]">
-          <p>If you have a promo code , enter it please</p>
-          <div className="rounded-sm ">
-            <input
-              type="text"
-              className="outline-none bg-gray-200  p-[10px] px-[30px]"
-              placeholder="Enter promo code"
-            />
-            <button className="bg-black text-white p-[10px] px-[30px]">
-              Submit
-            </button>
-          </div>
         </div>
       </div>
     </div>

@@ -3,11 +3,12 @@ function ExploreMenu(Props) {
   return (
     <div className="mt-[30px] flex flex-col gap-[15px]">
       <h1 className="font-bold font-outfit text-2xl">Explore our menu</h1>
-      <p className="w-[650px] font-outfit">
+      <p className="w-full sm:w-[650px] font-outfit">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum,
-        accusantium?Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        accusantium? Lorem, ipsum dolor sit amet consectetur adipisicing elit.
         Eum, accusantium?
       </p>
+
       {/* menu list */}
       <div className="flex gap-10   mt-[10px] overflow-x-scroll hide-scrollbar ">
         {menu_list.map((item, index) => {

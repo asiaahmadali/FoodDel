@@ -24,13 +24,13 @@ function MyOrders() {
     }
   }, [token]);
   return (
-    <div className="font-outfit my-[60px] mx-[90px]">
+    <div className="font-outfit lg:my-[60px] lg:mx-[90px] m-[15px]">
       <h1 className="text-2xl font-bold">My Orders</h1>
       <div className="flex flex-col items-center mt-[20px] gap-[20px] ">
         {data.map((order, orderindex) => {
           return (
             <div
-              className="flex items-center text-[#454545] border-[1px]  border-orange-500 p-[20px] justify-between w-full"
+              className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 place-items-center text-[#454545] border-[1px]  border-orange-500 p-[20px] justify-between w-full"
               key={orderindex}
             >
               <img src={assets.parcel_icon} alt="" className="w-[55px]" />
