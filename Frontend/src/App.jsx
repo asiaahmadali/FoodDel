@@ -10,10 +10,19 @@ import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import Verify from './pages/verifyOrder/verify';
 import MyOrders from './pages/MyOrders/MyOrders';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
   const location = useLocation();
-
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Set animation duration (optional)
+      easing: 'ease', // Set easing function (optional)
+      once: true, // Animation will only happen once (optional)
+    });
+  }, []);
   return (
     <div>
       {/* Only render NavBar and Footer if route is not /login or /signup */}
