@@ -36,10 +36,10 @@ function ListProducts() {
       <h1 className="text-2xl font-bold mb-[20px]">All Food List</h1>
       {/* items title */}
 
-      <div className="grid grid-cols-6 gap-2 text-[14px] md:text-[16px] md:gap-4 border-[1px] border-black border-b-0 border-opacity-[70%] p-[10px] bg-gray-100 items-center">
+      <div className="grid grid-cols-4 md:grid-cols-5 justify-items-between gap-2 text-[14px] md:text-[16px] md:gap-4 border-[1px] border-black border-b-0 border-opacity-[70%] p-[10px] bg-gray-100 items-center">
         <p>Image</p>
         <p>Name</p>
-        <p>Category</p>
+        <p className="hidden md:block">Category</p>
         <p>Price</p>
         <p>Action</p>
       </div>
@@ -51,9 +51,9 @@ function ListProducts() {
           return (
             <div
               key={index}
-              className="grid text-[12px] gap-4 md:text-[16px] grid-cols-6 items-center p-[10px] border-[1px] border-black border-opacity-[70%]"
+              className="grid  text-[12px] gap-4 md:text-[16px] grid-cols-4 md:grid-cols-5 items-center p-[10px] border-[1px] border-black border-opacity-[70%]"
             >
-              <div className="flex justify-start">
+              <div className="flex justify-start justify-items-between">
                 <img
                   src={`${url}/images/${item.image}`}
                   alt={item.name}
@@ -62,7 +62,7 @@ function ListProducts() {
               </div>
 
               <p>{item.name}</p>
-              <p>{item.category}</p>
+              <p className="hidden md:block">{item.category}</p>
               <p>{'$' + item.price}</p>
               <p
                 className="cursor-pointer"
