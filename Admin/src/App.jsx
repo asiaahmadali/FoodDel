@@ -1,6 +1,6 @@
 import NavBar from './components/NavBar/NavBar';
-import SideBar from './components/sideBar/sidebar';
 import { Routes, Route } from 'react-router-dom';
+import SideBar from './components/SideBar/SideBar';
 import './index.css';
 import AddProduct from './pages/AddProduct/AddProduct';
 import Orders from './pages/Orders/Orders';
