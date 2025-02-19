@@ -29,7 +29,7 @@ function Cart() {
                   {/* Item Image on small screens below item name */}
                   <div className="sm:col-span-1 flex  sm:mb-0 mb-[10px]">
                     <img
-                      src={`${backendURL}/images/` + item.image}
+                      src={`${backendURL}/uploads/` + item.image}
                       alt={item.name}
                       className="w-[100px] h-[70px]"
                     />
