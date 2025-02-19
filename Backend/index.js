@@ -23,7 +23,7 @@ const __dirname = dirname(__filename);
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+//app.use(cors());
 // cors error resolve
 app.use(
   cors({
