@@ -8,7 +8,7 @@ dotenv.config();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const placeOrder = async (req, res) => {
   const { userId, items, amount, address } = req.body;
-  const frontentURL = 'http://localhost:5173';
+  const frontentURL = 'http://quick-bite-frontendside.vercel.app';
   try {
     const Order = await orderModel.create({
       userId,
