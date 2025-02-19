@@ -8,7 +8,7 @@ import PlaceOrder from './pages/PLaceOrder/PlaceOrder';
 import Footer from './components/Footer/Footer';
 import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
-import Verify from './pages/verifyOrder/verify';
+import VerifyOrder from './pages/verifyOrder/VerifyOrder';
 import MyOrders from './pages/MyOrders/MyOrders';
 import { useEffect } from 'react';
 import AOS from 'aos';
@@ -36,7 +36,7 @@ function App() {
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/verify" element={<Verify />} />
+        <Route path="/verify" element={<VerifyOrder />} />
         <Route path="/myorders" element={<MyOrders />} />
       </Routes>
 

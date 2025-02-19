@@ -3,7 +3,7 @@ import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext';
 import { useEffect, useContext } from 'react';
 
-function Verify() {
+function VerifyOrder() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { backendURL } = useContext(StoreContext);
   const success = searchParams.get('success');
@@ -34,4 +34,4 @@ function Verify() {
   );
 }
 
-export default Verify;
+export default VerifyOrder;
