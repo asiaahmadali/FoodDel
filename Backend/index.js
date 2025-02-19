@@ -17,17 +17,14 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// ✅ Global CORS Middleware
-app.use(
-  cors({
-    origin: ['https://quick-bite-frontendside.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  })
-);
-
-// ✅ Preflight Request Handling (Important for CORS)
-app.options('*', cors());
+// ✅ Step 1: Apply CORS Middleware (Always Set Headers)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://quick-bite-frontendside.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
 // ✅ Middleware
 app.use(express.json());
