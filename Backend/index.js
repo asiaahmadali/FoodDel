@@ -67,6 +67,11 @@ app.get('/', (req, res) => {
   res.send('Welcome to QuickBite API');
 });
 
+// ✅ Handle 404 Errors (Redirect to index.html)
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // ✅ Start Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
