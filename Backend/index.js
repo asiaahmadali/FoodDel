@@ -10,73 +10,55 @@ import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 import dotenv from 'dotenv';
 
-// ✅ Load Environment Variables
 dotenv.config();
+const app = express();
 
-// ✅ Fix for __dirname in ES Module
+// Fix for __dirname in ES Module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// ✅ Initialize Express App
-const app = express();
+// ✅ Step 1: Apply CORS Middleware (Always Set Headers)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://quick-bite-frontendside.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Add OPTIONS
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token'); // Add 'token'
+  res.header('Access-Control-Allow-Credentials', 'true');
 
-// ✅ Database Connection with Error Handling
-connectDB()
-  .then(() => console.log('✅ Database Connected Successfully'))
-  .catch((err) => {
-    console.error('❌ Database Connection Failed:', err);
-    process.exit(1); // Exit on failure
-  });
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204); // No content for preflight requests
+  }
 
-// ✅ Use CORS Middleware for Security & Flexibility
-const allowedOrigins = ['https://quick-bite-frontendside.vercel.app']; // ✅ Define Allowed Origins
+  next();
+});
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('❌ CORS Not Allowed'));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'token'], // ✅ Ensure 'token' is allowed
-    credentials: true,
-  })
-);
-
-// ✅ Parse JSON & Form Data
+// ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Serve Static Files (Consider using a CDN or Cloud Storage)
+// ✅ Serve Static Files (Check Vercel storage limitations)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// ✅ Database Connection with Error Handling
+connectDB().catch((err) => {
+  console.error('Database connection failed:', err);
+  process.exit(1);
+});
 
 // ✅ Routes
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
+app.use('/images', express.static('uploads'));
 
 // ✅ Root Route
 app.get('/', (req, res) => {
-  res.send('🚀 Welcome to QuickBite API');
-});
-
-// ✅ Handle 404 Errors
-app.use((req, res, next) => {
-  res.status(404).json({ error: '❌ Route Not Found' });
-});
-
-// ✅ Global Error Handling Middleware
-app.use((err, req, res, next) => {
-  console.error('🔥 Global Error:', err.stack);
-  res.status(500).json({ error: '❌ Internal Server Error' });
+  res.send('Welcome to QuickBite API');
 });
 
 // ✅ Start Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });
