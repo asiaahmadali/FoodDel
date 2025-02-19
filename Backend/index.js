@@ -17,7 +17,7 @@ app.use(cors());
 // cors error resolve
 app.use(
   cors({
-    origin: [''],
+    origin: ['https://quick-bite-frontendside.vercel.app'],
     methods: ['POST', 'GET'],
     credentials: true,
   })
