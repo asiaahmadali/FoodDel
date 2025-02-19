@@ -17,7 +17,7 @@ app.use(cors());
 // cors error resolve
 app.use(
   cors({
-    origin: ['https://deploy-mern-1whq.vercel.app'],
+    origin: [''],
     methods: ['POST', 'GET'],
     credentials: true,
   })
