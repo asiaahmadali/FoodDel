@@ -5,7 +5,7 @@ import { assets } from '../../assests/assets';
 
 function Orders() {
   const [orders, setOrders] = useState([]);
-  const backendURL = 'http://quick-bite-navy.vercel.app';
+  const backendURL = 'https://quick-bite-navy.vercel.app';
 
   const getAllOrders = async () => {
     const response = await axios.get(`${backendURL}/api/order/listorders`);

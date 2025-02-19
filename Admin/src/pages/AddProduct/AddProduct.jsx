@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 function AddProduct() {
   // backendurl
-  const backendurl = `http://quick-bite-navy.vercel.app`;
+  const backendurl = `https://quick-bite-navy.vercel.app`;
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: '',
