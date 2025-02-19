@@ -31,7 +31,7 @@ function Login() {
   };
 
   return (
-    <div className="flex bg-[url(log7.avif)]  bg-cover bg-center bg-no-repeat justify-center items-center min-h-screen bg-gray-900 font-outfit">
+    <div className="flex bg-[url(/log7.avif)]  bg-cover bg-center bg-no-repeat justify-center items-center min-h-screen bg-gray-900 font-outfit">
       <div
         data-aos="flip-right"
         className="w-full max-w-md m-[10px] bg-opacity-50 p-8 bg-gray-800 shadow-gray-200 shadow-md rounded-lg border border-gray-700"

@@ -2,7 +2,7 @@ function Header() {
   return (
     <div className="md:my-[100px] my-[15px] " data-aos="zoom-in">
       {/* header div */}
-      <div className="bg-[url(head.avif)] rounded-md bg-no-repeat bg-center flex items-center justify-center bg-cover min-h-[450px] w-full sm:min-h-[450px] xs:min-h-[250px]">
+      <div className="bg-[url(/head.avif)] rounded-md bg-no-repeat bg-center flex items-center justify-center bg-cover min-h-[450px] w-full sm:min-h-[450px] xs:min-h-[250px]">
         <div
           data-aos="zoom-in"
           className="flex text-white flex-col gap-2 items-center justify-center"

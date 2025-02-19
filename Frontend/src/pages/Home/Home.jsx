@@ -4,7 +4,7 @@ import { useState } from 'react';
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
 import AppDownload from '../../components/AppDownload/AppDownload';
 import Team from '../../components/Team/Team';
-import Customer from '../../components/Customer/customer';
+import Customer from '../../components/Customer/Customer';
 
 function Home() {
   const [category, setCategory] = useState('All');

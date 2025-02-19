@@ -33,7 +33,7 @@ function SignUp() {
   };
 
   return (
-    <div className="flex justify-center bg-[url(log5.avif)]  bg-cover bg-center bg-no-repeat items-center min-h-screen bg-gray-900 font-outfit">
+    <div className="flex justify-center bg-[url(/log5.avif)]  bg-cover bg-center bg-no-repeat items-center min-h-screen bg-gray-900 font-outfit">
       <div
         data-aos="flip-right"
         className="w-full max-w-lg m-[10px] bg-opacity-50 p-8 bg-gray-800 rounded-lg  shadow-gray-200 shadow-md border border-gray-700"
