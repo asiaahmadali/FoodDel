@@ -12,7 +12,7 @@ function FoodItem(Props) {
           src={
             `https://quick-bite-navy.vercel.app/images/` + Props.fooditem.image
           }
-          alt=""
+          alt="an image"
           className="rounded-t-md w-full h-[220px] object-cover"
         />
         {console.log(cartitems)}
