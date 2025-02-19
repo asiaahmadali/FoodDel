@@ -8,7 +8,7 @@ import PlaceOrder from './pages/PLaceOrder/PlaceOrder';
 import Footer from './components/Footer/Footer';
 import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
-import VerifyOrder from './pages/verifyOrder/VerifyOrder';
+import VerifyOrder from './pages/VerifyOrder/VerifyOrder';
 import MyOrders from './pages/MyOrders/MyOrders';
 import { useEffect } from 'react';
 import AOS from 'aos';
