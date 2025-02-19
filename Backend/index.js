@@ -10,11 +10,18 @@ import 'dotenv/config';
 import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
-
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+// cors error resolve
+app.use(
+  cors({
+    origin: ['https://deploy-mern-1whq.vercel.app'],
+    methods: ['POST', 'GET'],
+    credentials: true,
+  })
+);
 
 // db connection
 connectDB();
