@@ -20,7 +20,7 @@ const __dirname = dirname(__filename);
 // ✅ Step 1: Apply CORS Middleware (Always Set Headers)
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://quick-bite-frontendside.vercel.app');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Add OPTIONS
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Include OPTIONS
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token'); // Add 'token'
   res.header('Access-Control-Allow-Credentials', 'true');
 
