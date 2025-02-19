@@ -1,3 +1,7 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js';
@@ -10,8 +14,12 @@ import 'dotenv/config';
 import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
+
+// Fix for __dirname in ES Module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 // static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
