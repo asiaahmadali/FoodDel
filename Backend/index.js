@@ -32,6 +32,16 @@ app.use((req, res, next) => {
   next();
 });
 
+// ✅ Step 2: Additional CORS Middleware (Alternative)
+app.use(
+  cors({
+    origin: 'https://quick-bite-frontendside.vercel.app', // Allow your frontend domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  })
+);
+
 // ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
