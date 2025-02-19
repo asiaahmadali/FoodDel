@@ -27,12 +27,15 @@ app.use(
 connectDB();
 
 // router api's
-
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
 app.use('/images', express.static('uploads'));
+
+app.get('/', (req, res) => {
+  res.send('welcome to quickbite');
+});
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('server started');
