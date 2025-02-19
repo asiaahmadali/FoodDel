@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 function ListProducts() {
   const [list, setList] = useState([]);
-  const backendurl = `http://localhost:3000`;
+  const backendurl = `http://quick-bite-navy.vercel.app`;
 
   // getlist api
   const fetchList = async () => {
