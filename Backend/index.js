@@ -11,44 +11,42 @@ import orderRouter from './routes/orderRoute.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
+const app = express();
 
 // Fix for __dirname in ES Module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-const app = express();
-
-// ✅ CORS Configuration (Runs Before Routes)
+// static files
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+//app.use(cors());
+// cors error resolve
 app.use(
   cors({
     origin: ['https://quick-bite-frontendside.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['POST', 'GET'],
     credentials: true,
   })
 );
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Serve Static Files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-// Connect to MongoDB
+// db connection
 connectDB();
 
-// Routes (CORS should be enabled before these)
+// router api's
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
+app.use('/images', express.static('uploads'));
 
 app.get('/', (req, res) => {
-  res.send('Welcome to QuickBite');
+  res.send('welcome to quickbite');
 });
 
-// Start Server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log('server started');
 });
+
+//   mongodb+srv://asiaahmadali:asiaahmadali786@cluster0.aa0qs.mongodb.net/?
