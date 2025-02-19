@@ -8,7 +8,7 @@ const StoreContextprovider = (Props) => {
   const [food_list, setFoodList] = useState([]);
   // jwt token
   const [token, setToken] = useState('');
-  const backendURL = 'quick-bite-navy.vercel.app';
+  const backendURL = 'http://quick-bite-navy.vercel.app';
 
   // when user add item first time in cart
   const addToCart = async (itemid) => {
