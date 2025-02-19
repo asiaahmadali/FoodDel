@@ -10,7 +10,7 @@ function FoodItem(Props) {
       <div className="relative">
         <img
           src={
-            `https://quick-bite-navy.vercel.app/images/` + Props.fooditem.image
+            `https://quick-bite-navy.vercel.app/uploads/` + Props.fooditem.image
           }
           alt="an image"
           className="rounded-t-md w-full h-[220px] object-cover"
