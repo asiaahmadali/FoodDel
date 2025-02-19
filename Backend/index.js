@@ -11,7 +11,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
 // static files
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

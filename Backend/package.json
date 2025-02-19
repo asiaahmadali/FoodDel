@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
+  "proxy": "https://quick-bite-navy.vercel.app",
   "scripts": {
     "start": "nodemon index.js"
   },
