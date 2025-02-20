@@ -64,22 +64,22 @@ app.use(
 );
 
 // cors
-const allowedOrigins = [
-  'https://quick-bite-adminpannel.vercel.app',
-  'https://quick-bite-frontendside.vercel.app',
-];
+// const allowedOrigins = [
+//   'https://quick-bite-adminpannel.vercel.app',
+//   'https://quick-bite-frontendside.vercel.app',
+// ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (allowedOrigins.indexOf(origin) !== -1) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//   })
+// );
 
 // ✅ Middleware
 app.use(express.json());
