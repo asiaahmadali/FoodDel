@@ -46,7 +46,7 @@ function PlaceOrder() {
       `${backendURL}/api/order/placeorder`,
       orderData,
       {
-        headers: { token },
+        headers: { token, 'Content-Type': 'application/json' },
       }
     );
     console.log(response);
