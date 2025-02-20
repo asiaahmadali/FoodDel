@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -8,7 +9,6 @@ import foodRouter from './routes/foodRoute.js';
 import userRouter from './routes/userRoute.js';
 import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
-import dotenv from 'dotenv';
 
 dotenv.config();
 const app = express();
@@ -19,6 +19,7 @@ const __dirname = dirname(__filename);
 
 // ✅ Step 1: Apply CORS Middleware (Always Set Headers)
 app.use((req, res, next) => {
+  HEAD;
   res.header(
     'Access-Control-Allow-Origin',
     'https://quick-bite-frontendside.vercel.app'
@@ -26,13 +27,39 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://quick-bite-frontendside.vercel.app'
+  );
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Add OPTIONS
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, token'
+  ); // Add 'token'
+  res.header('Access-Control-Allow-Credentials', 'true');
 
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204); // No content for preflight requests
+  }
+
+  f5f256b98f2810fafc6fc8e6f2fd4674d71dff39;
   next();
 });
 // token headers
 app.use(
   cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
+  })
+);
+
+// ✅ Step 2: Additional CORS Middleware (Alternative)
+app.use(
+  cors({
+    origin: 'https://quick-bite-frontendside.vercel.app', // Allow your frontend domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
 
@@ -59,6 +86,11 @@ app.use('/images', express.static('uploads'));
 // ✅ Root Route
 app.get('/', (req, res) => {
   res.send('Welcome to QuickBite API');
+});
+
+// ✅ Handle 404 Errors (Redirect to index.html)
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // ✅ Start Server
