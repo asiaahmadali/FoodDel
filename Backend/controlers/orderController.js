@@ -55,7 +55,7 @@ const placeOrder = async (req, res) => {
   }
 };
 
-// order payment verifications but (professional way is to use webhooks)
+// order payment verifications
 
 const verifyOrder = async (req, res) => {
   const { orderId, success } = req.body;
